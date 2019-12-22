@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,10 @@ namespace BHOurProject.Models.Entity
         public string Fax { get; set; }
         public string MapPath { get; set; }
         public string DetailInformation { get; set; }
+        [DefaultValue(false)]
         public bool IsActive { get; set; }
+
+        public virtual List<Machine> MachineList { get; set; }
+
     }
 }
