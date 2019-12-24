@@ -2,23 +2,23 @@
 
 namespace BHOurProject.Areas.Area
 {
-    public class AreaAreaRegistration : AreaRegistration 
+    public class AreaAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
-                return "Area";
+                return "Admin";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Area_default",
-                "Area/Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+        "Admin_default",
+        "Admin/{controller}/{action}/{id}",
+        new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+        new string[] { "BHOurProject.Areas.Admin.Controllers" });
         }
     }
 }
