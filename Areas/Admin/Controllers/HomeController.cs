@@ -13,5 +13,14 @@ namespace BHOurProject.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Approve(int commentId)
+        {
+            // bu kısımda yorum ile ilgili veya siz ne için kullanmak
+            // istiyorsanız ilgili kodunuzu yazıyorsunuz.
+            // Daha sonra da buna göre bir sonuc döndürebilirsiniz.
+
+            return Json(new { result = 1, message = "Başarılı." });
+        }
     }
 }

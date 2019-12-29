@@ -20,7 +20,7 @@ namespace BHOurProject.Models.Entity
         public double Quantity { get; set; }
         public string City { get; set; }
         public string Explanation { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
     }
 }

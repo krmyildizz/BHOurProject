@@ -1,255 +1,156 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-
-    <!-- Required meta tags -->
+    @{var selectedCategory = Url.RequestContext.RouteData.Values["action"]; }
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Grayrids">
-    <title>Essence - Bootstrap 4 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Alper Kaplama A.Ş</title>
+    <link rel="shortcut icon" href="assets\images\favicon.ico">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/css/line-icons.css">
-    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
-    <link rel="stylesheet" href="~/Content/css/owl.theme.css">
-    <link rel="stylesheet" href="~/Content/css/nivo-lightbox.css">
-    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/Content/css/animate.css">
-    <link rel="stylesheet" href="~/Content/css/color-switcher.css">
-    <link rel="stylesheet" href="~/Content/css/menu_sideslide.css">
-    <link rel="stylesheet" href="~/Content/css/main.css">
-    <link rel="stylesheet" href="~/Content/css/responsive.css">
-
+    <!-- Core Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/master.css">
+    <!-- Responsive Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/responsive.css">
+    <!-- Revolution Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/navigation.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <header id="slider-area">
-        <nav class="navbar navbar-expand-md navbar-fixed-top scrolling-navbar bg-white">
+    <div id="loader-overlay">
+        <div class="loader">
+            <div class="spinner">
+                <svg viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="length" fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+                </svg>
+                <svg viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+                </svg>
+                <svg viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+                </svg>
+                <svg viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <!--== Header Start ==-->
+        <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav on no-full no-border">
+            <!--== Start Top Search ==-->
+            <div class="fullscreen-search-overlay" id="search-overlay">
+                <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="icofont icofont-close"></i></a>
+                <div id="fullscreen-search-wrapper">
+                    <div id="fullscreen-searchform">
+                        <input type="text" value="" placeholder="Arama Yapınız..." id="fullscreen-search-input" class="search-bar-top">
+                        <i class="fullscreen-search-icon icofont icofont-search">
+                            <input value="" type="submit">
+                        </i>
+                    </div>
+                </div>
+            </div>
+            <!--== End Top Search ==-->
             <div class="container">
-                <a class="navbar-brand" href="index.html"><span class="lni-bulb"></span>ESSENCE</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="lni-menu"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#slider-area">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#services">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#features">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#portfolios">Works</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#pricing">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#team">Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#subscribe">Subscribe</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link page-scroll" href="#contact">Contact</a>
+                <!--== Start Atribute Navigation ==-->
+                <div class="attr-nav hidden-xs sm-display-none">
+                    <ul>
+                        <li>
+                            <a href="/Home/ColorPicker" style="background:#ff0000;
+    color:#ffffff;">RENK KARTELASI</a>
                         </li>
                     </ul>
                 </div>
+                <!--== End Atribute Navigation ==-->
+                <!--== Start Header Navigation ==-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="tr-icon ion-android-menu"></i> </button>
+                    <div class="logo"> <a href="/Home"> <img class="logo logo-display" src="~/Content/assets/images/logo.png" alt=""> <img class="logo logo-scrolled" src="~/Content/assets/images/logo.png" alt=""> </a> </div>
+                </div>
+                <!--== End Header Navigation ==-->
+                <!--== Collect the nav links, forms, and other content for toggling ==-->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
+                        <li><a class="page-scroll" href="/Home">Ana Sayfa</a></li>
+                        <li><a class="page-scroll" href="/Home#tesis">Tesislerimiz</a></li>
+                        <li><a class="page-scroll" href="/Category">Ürünlerimiz</a></li>
+                        <li><a class="page-scroll" href="/Home#about">Hakkımızda</a></li>
+                        <li><a class="page-scroll" href="/News">Haberler</a></li>
+                        <li class="dropdown">
+                            <a class="page-scroll" href="/Forms">Formlar</a><ul class="dropdown-menu" role="menu">
+                                <li><a class="page-scroll" href="/Forms">Kariyer Formu</a></li>
+                                <li><a class="page-scroll" href="/Forms/RequestForm">Talep Formu</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="page-scroll" href="/Certificate">Sertifikalar</a></li>
+                        <li><a class="page-scroll" href="/Home#contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <!--== /.navbar-collapse ==-->
             </div>
         </nav>
-        <!-- Main Carousel Section -->
-        <div id="carousel-area">
-            <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-slider" data-slide-to="1"></li>
-                    <li data-target="#carousel-slider" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img src="http://alpercelik.com.tr/assets/images/Referanslarimiz/sandvic-panel/1.JPG" alt="">
-                        <div class="carousel-caption text-left">
-                            <h3 class="wow fadeInRight" data-wow-delay="0.2s" />
-                            <h1> Handcrafted</h1>
-                            <h2 class="wow fadeInRight" data-wow-delay="0.4s">Bootstrap 4 Template</h2>
-                            <h4 class="wow fadeInRight" data-wow-delay="0.6s">Comes with All Essential Sections & Elements</h4>
-                            <a href="#" class="btn btn-lg btn-common btn-effect wow fadeInRight" data-wow-delay="0.9s">Download</a>
-                            <a href="#" class="btn btn-lg btn-border wow fadeInRight" data-wow-delay="1.2s">Get Started!</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="http://alpercelik.com.tr/assets/images/Referanslarimiz/sandvic-panel/11.jpg" alt="">
-                        <div class="carousel-caption text-center">
-                            <h3 class="wow fadeInDown" data-wow-delay="0.3s">Bundled With Tons of</h3>
-                            <h2 class="wow bounceIn" data-wow-delay="0.6s">Cutting-edge Features</h2>
-                            <h4 class="wow fadeInUp" data-wow-delay="0.9s">Parallax, Video, Product, Premium Addons and More...</h4>
-                            <a href="#" class="btn btn-lg btn-common btn-effect wow fadeInUp" data-wow-delay="1.2s">View Works</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="http://alpercelik.com.tr/assets/images/Referanslarimiz/sandvic-panel/12.jpg" alt="">
-                        <div class="carousel-caption text-center">
-                            <h3 class="wow fadeInDown" data-wow-delay="0.3s">Ready For</h3>
-                            <h2 class="wow fadeInRight" data-wow-delay="0.6s">Multi-purpose Websites</h2>
-                            <h4 class="wow fadeInUp" data-wow-delay="0.6s">App, Business, SaaS and Landing Pages</h4>
-                            <a href="#" class="btn btn-lg btn-border wow fadeInUp" data-wow-delay="0.9s">Purchase</a>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev" style="margin-top: 310px;
-    margin-left: 30px;">
-                    <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left"></i></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next"style=" margin-top: 310px;
-    margin-left: 30px;">
-                    <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-right"></i></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+        <!--== Header End ==-->
+        <div class="body-content" ng-app="myapp">
+            @RenderBody()
         </div>
-    </header>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <!-- Footer Area Start -->
-            <section class="footer-Content">
+
+        <!--== Footer Start ==-->
+        <footer class="footer">
+            <div class="footer-copyright">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-                            <h3>Essence</h3>
-                            <div class="textwidget">
-                                <p>
-                                    If you think you have the passion,
-                                    attitude and capability to join us
-                                    the next big software company
-                                    s so that we can get the convers.
-                                </p>
-                            </div>
-                            <ul class="footer-social">
-                                <li><a class="facebook" href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="lni-twitter-filled"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="lni-google-plus"></i></a></li>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="copy-right text-left">© 2020 Alper Kaplama Sistmeleri Tüm Hakları Saklıdır.</div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <ul class="social-media">
+                                <li><a href="https://www.facebook.com/alper.celik.50596" class="icofont icofont-facebook"></a></li>
+                                <li><a href="https://twitter.com/alpercelikas" class="icofont icofont-twitter"></a></li>
+                                <li><a href="https://www.instagram.com/alpercelikas/" class="icofont icofont-instagram"></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-                            <div class="widget">
-                                <h3 class="block-title">Short Link</h3>
-                                <ul class="menu">
-                                    <li><a href="#">Service</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Advance Sarch</a></li>
-                                    <li><a href="#">Site Map</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-                            <div class="widget">
-                                <h3 class="block-title">Contact Us</h3>
-                                <ul class="contact-footer">
-                                    <li>
-                                        <strong>Address :</strong> <span>1900 Pico Blvd, New York br Centernial, colorado</span>
-                                    </li>
-                                    <li>
-                                        <strong>Phone :</strong> <span>+48 123 456 789</span>
-                                    </li>
-                                    <li>
-                                        <strong>E-mail :</strong> <span><a href="#">info@example.com</a></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-                            <div class="widget">
-                                <h3 class="block-title">Instagram</h3>
-                                <ul class="instagram-footer">
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta1.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta2.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta3.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta4.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta5.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="~/Content/img/instagram/insta6.jpg" alt=""></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Footer area End -->
-            <!-- Copyright Start  -->
-            <div id="copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="site-info float-left">
-                                <p>Crafted by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>
-                            </div>
-                            <div class="float-right">
-                                <ul class="nav nav-inline">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#">About Prime</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">TOS</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Return Policy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">FAQ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Copyright End -->
-
         </footer>
-        <!-- Footer Section End -->
-        <!-- Go To Top Link -->
-        <a href="#" class="back-to-top">
-            <i class="lni-arrow-up"></i>
-        </a>
-
-        <div id="loader">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
-
+        <!--== Footer End ==-->
+        <!--== Go to Top  ==-->
+        <a href="javascript:" id="return-to-top"><i class="icofont icofont-arrow-up"></i></a>
+        <!--== Go to Top End ==-->
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-
     <script src="~/Scripts/js/jquery-min.js"></script>
+    <script src="~/Content/assets/js/smoothscroll.js"></script>
+    <script src="~/Content/assets/js/plugins.js"></script>
+    <script src="~/Content/assets/js/master.js"></script>
     <script src="~/Scripts/js/popper.min.js"></script>
     <script src="~/Scripts/js/bootstrap.min.js"></script>
     <script src="~/Scripts/js/classie.js"></script>
     <script src="~/Scripts/js/color-switcher.js"></script>
     <script src="~/Scripts/js/jquery.mixitup.js"></script>
+
+
+    <!-- Revolution js Files -->
+    <script src="~/Content/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Content/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.actions.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.carousel.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.kenburn.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.migration.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.navigation.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.parallax.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.slideanims.min.js"></script>
+    <script src="~/Content/revolution/js/revolution.extension.video.min.js"></script>
+
+
     <script src="~/Scripts/js/nivo-lightbox.js"></script>
     <script src="~/Scripts/js/owl.carousel.js"></script>
     <script src="~/Scripts/js/jquery.stellar.min.js"></script>
@@ -264,5 +165,6 @@
     <script src="~/Scripts/js/form-validator.min.js"></script>
     <script src="~/Scripts/js/contact-form-script.js"></script>
     <script src="~/Scripts/js/main.js"></script>
+
 </body>
 </html>

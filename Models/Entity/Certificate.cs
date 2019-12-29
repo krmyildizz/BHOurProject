@@ -13,7 +13,7 @@ namespace BHOurProject.Models.Entity
         public int Id { get; set; }
         public string Text { get; set; }
         public string Image { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
     }
 }

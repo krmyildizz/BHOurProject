@@ -1,0 +1,69 @@
+﻿@using BHOurProject.Models.Entity;
+@model List<Product>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var selectedCategory = Convert.ToInt32(Url.RequestContext.RouteData.Values["Id"]);
+}
+
+<section class="white-bg">
+    <div class="container">
+        <div class="row">
+            <div class="product-main">
+                <div class="product-sidebar">
+                    @Html.Action("Category", "Category")
+                </div>
+                <div class="product-list">
+                    <div class="product-list-main">
+                        <!-- Foreach Olarak Dön -->
+                        @if (Model.Count() == 0)
+                        {
+                            @*<div class="alert alert-warning " style="height: 50px; width: 100%;" role="alert">
+                                    <i class="fas fa-exclamation-circle" style="font-size:20px;"></i>
+                                    Bu Kategoride Ürün Bulunamadı.
+                                </div>*@
+                        }
+                        else
+                        {
+                            @*<div class="alert alert-warning text-muted" style="height: 50px; width: 100%;" role="alert">
+                                    <i class="far fa-check-circle" style="font-size: 20px;"></i>
+                                    <strong> @Model.Count() adet</strong> ürün bulunmaktadır.
+                                </div>*@
+                            foreach (var item in Model)
+                            {
+                                <div class="product-box">
+                                    <a href="/Home/ProductDetail/@item.Id">
+                                        <div class="product-box-main">
+                                            <div class="product-box-img">
+                                                <div class="product-box-img-effect">
+                                                    <img src="@item.Image" class="card-img-top" alt="...">
+                                                </div>
+                                            </div>
+                                            <div class="product-box-head">
+                                                <h2>@item.Name</h2>
+                                            </div>
+                                            <div class="product-box-text">
+                                                <p class="card-text"> @item.Description</p>
+                                            </div>
+                                            <div class="btn-product-main">
+                                                <a href="/Home/ProductDetail/@item.Id" class="btn btn-product">Detay</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                        <!-- Foreach Olarak Dön -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+

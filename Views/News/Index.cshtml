@@ -1,0 +1,50 @@
+﻿@using System.Globalization;
+@using BHOurProject.Models.Entity
+@model IEnumerable<News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="white-bg">
+    <div class="container">
+        <div class="row">.
+            <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 mb-50">
+                        <ul class="single-blog-list two-column">
+                            <!-- Foreach ile dönülecek alan -->
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <div class="date-box">
+                                        <span class="day default-bg">@item.Date.Day</span>
+                                        <span class="month">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Date.Month)</span>
+                                        <span class="year">@item.Date.Year</span>
+                                    </div>
+                                    <div class="post-wrap">
+                                        <div class="post-img">
+                                            <div class="slick">
+                                                <div class="item"><img class="img-responsive" src="@item.Image" alt=""></div>
+                                            </div>
+                                        </div>
+                                        <div class="post-text">
+                                            @*<h3><a href="home-blog.html">Illustration</a></h3>*@
+                                            <p>
+                                                @item.Text
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+
+                            <!-- Foreach dönülücek alan -->
+                        </ul>
+                    </div>
+                    <!--== Post End ==-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

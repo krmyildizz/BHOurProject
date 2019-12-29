@@ -1,0 +1,44 @@
+﻿@using BHOurProject.Models.Entity;
+@model Product
+<section class="white-bg">
+    <div class="container">
+        <div class="product-details-full">
+            <div class="product-details-img">
+                <div class="product-details-img-main-full">
+                    <div class="product-details-img-main">
+                        <img class="img-fluid" src="@Model.Image">
+                    </div>
+                </div>
+            </div>
+            <div class="product-details-info">
+                <div class="product-details-head-full">
+                    <div class="product-details-head">
+                        @Model.Name
+                    </div>
+                    <div class="product-details-pdf-icon">
+                        <a target="_blank" href="@Model.Pdf"><i class="icon-document font-40px"></i><span>PDF</span></a>
+                    </div>
+                </div>
+                <div class="product-information">
+                    <div class="product-information-full">
+                        <h3 class="my-3">@Model.SubName</h3>
+                        <p>@Model.Description</p>
+                    </div>
+                    <div class="product-information-full">
+                        <h3 class="my-3">Performans Değerlendirmesi</h3>
+                        <p>@Model.Description2</p>
+                    </div>
+                    <div class="product-information-full">
+                        <h3 class="my-3">Uygulama Alanları</h3>
+                        <p>@Model.AplicationAreas</p>
+                    </div>
+                    <div class="product-information-full">
+                        <span>Üretim Yeri :</span>
+                        <span>@Model.ManufacturingPlace</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

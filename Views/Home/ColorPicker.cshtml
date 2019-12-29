@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ColorPicker";
+}
+
+<section class="white-bg" style="padding-top:80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
+                <div class="row">
+                    <h2 style="text-align:center;">RENK KARTELASI</h2>
+                    <!--== Post End ==-->
+                </div>
+                <div class="row">
+                    <div class="color-picker-full">
+                        @foreach (var item in ViewBag.Data)
+                        {
+                            <div class="color-picker-cols">
+                                <div class="color-picker-cols-full">
+                                    <div class="color-picker-bg" style="@item.Rgb"></div>
+                                    <span>@item.Value</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

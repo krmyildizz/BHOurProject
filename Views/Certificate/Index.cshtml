@@ -1,0 +1,31 @@
+﻿@using BHOurProject.Models.Entity
+@model List<Certificate>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="white-bg" style="padding-top:80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
+                <div class="row">
+                    <h2 style="text-align:center;">SERTİFİKALAR</h2>
+                    <!--== Post End ==-->
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <figure class="snip1321">
+                                <img src="@item.Image" alt="sq-sample26" />
+                                <figcaption>
+                                    <h4>@item.Text</h4>
+                                </figcaption><a href="#"></a>
+                            </figure>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

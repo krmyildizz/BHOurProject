@@ -1,0 +1,42 @@
+﻿@using BHOurProject.Models.Entity
+@model List<Machine>
+    @{
+        ViewBag.Title = "MachineDetail";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <section class="white-bg" style="padding-top:80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mb-50">
+                            <ul class="single-blog-list">
+                                <li>
+                                    <h3 style="font-size: 30px;margin-top: 0;margin-bottom: 30px;text-align:center;color: #333333;">
+                                        <a href="#">Tesis Detayı</a>
+                                    </h3>
+                                    <div class="post-wrap">
+                                        <div class="post-img">
+                                            <div class="slick">
+                                                <div class="item"><img class="img-responsive" src="" alt=""></div>
+                                            </div>
+                                        </div>
+                                        <div class="post-text" style="margin-top:10px;">
+                                            <p>
+                                                @foreach (var item in Model)
+                                                {
+                                                    @item.Name
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--== Post End ==-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

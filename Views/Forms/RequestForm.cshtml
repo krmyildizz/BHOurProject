@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "RequestForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="white-bg" style="padding-top:80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
+                <div style="display:table;max-width:700px;margin:0 auto;width:100%;">
+                    <div class="row">
+                        <h2 style="text-align:center;">TALEP FORMU</h2>
+                        <!--== Post End ==-->
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Firma Adı</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firma Adı">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Firma Yetkilisi</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firma Yetkilisi">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Telefon</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Telefon">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Faks</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Faks">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Mail Adresi</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Mail Adresi">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="padding-left:0;">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">İlgilenen Ürün</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option value="0">Seçiniz</option>
+                                    <option value="Panel">Panel</option>
+                                    <option value="Accesories">Aksesuar</option>
+                                    <option value="Ridge">Mahya</option>
+                                    <option value="Guttered">Oluklu</option>
+                                    <option value="Sheatting">Tabaka</option>
+                                    <option value="Polycarbon">Polikarbon</option>
+                                    <option value="Roll">Rulo</option>
+                                    <option value="Hip">Kep</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="padding-right:0;">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Şehir</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option value="0">Seçiniz</option>
+                                    <option value="ADANA">ADANA</option>
+                                    <option value="ADIYAMAN">ADIYAMAN</option>
+                                    <option value="AFYON">AFYON</option>
+                                    <option value="AĞRI">AĞRI</option>
+                                    <option value="AKSARAY">AKSARAY</option>
+                                    <option value="AMASYA">AMASYA</option>
+                                    <option value="ANKARA">ANKARA</option>
+                                    <option value="ANTALYA">ANTALYA</option>
+                                    <option value="ARDAHAN">ARDAHAN</option>
+                                    <option value="ARTVİN">ARTVİN</option>
+                                    <option value="AYDIN">AYDIN</option>
+                                    <option value="BALIKESİR">BALIKESİR</option>
+                                    <option value="BARTIN">BARTIN</option>
+                                    <option value="BATMAN">BATMAN</option>
+                                    <option value="BAYBURT">BAYBURT</option>
+                                    <option value="BİLECİK">BİLECİK</option>
+                                    <option value="BİNGÖL">BİNGÖL</option>
+                                    <option value="BİTLİS">BİTLİS</option>
+                                    <option value="BOLU">BOLU</option>
+                                    <option value="BURDUR">BURDUR</option>
+                                    <option value="BURSA">BURSA</option>
+                                    <option value="ÇANAKKALE">ÇANAKKALE</option>
+                                    <option value="ÇANKIRI">ÇANKIRI</option>
+                                    <option value="ÇORUM">ÇORUM</option>
+                                    <option value="DENİZLİ">DENİZLİ</option>
+                                    <option value="DİYARBAKIR">DİYARBAKIR</option>
+                                    <option value="DÜZCE">DÜZCE</option>
+                                    <option value="EDİRNE">EDİRNE</option>
+                                    <option value="ELAZIĞ">ELAZIĞ</option>
+                                    <option value="ERZİNCAN">ERZİNCAN</option>
+                                    <option value="ERZURUM">ERZURUM</option>
+                                    <option value="ESKİŞEHİR">ESKİŞEHİR</option>
+                                    <option value="GAZİANTEP">GAZİANTEP</option>
+                                    <option value="GİRESUN">GİRESUN</option>
+                                    <option value="GÜMÜŞHANE">GÜMÜŞHANE</option>
+                                    <option value="HAKKARİ">HAKKARİ</option>
+                                    <option value="HATAY">HATAY</option>
+                                    <option value="İÇEL">İÇEL</option>
+                                    <option value="IĞDIR">IĞDIR</option>
+                                    <option value="ISPARTA">ISPARTA</option>
+                                    <option value="İSTANBUL">İSTANBUL</option>
+                                    <option value="İZMİR">İZMİR</option>
+                                    <option value="KAHRAMANMARAŞ">KAHRAMANMARAŞ</option>
+                                    <option value="KARABÜK">KARABÜK</option>
+                                    <option value="KARAMAN">KARAMAN</option>
+                                    <option value="KARS">KARS</option>
+                                    <option value="KASTAMONU">KASTAMONU</option>
+                                    <option value="KAYSERİ">KAYSERİ</option>
+                                    <option value="KİLİS">KİLİS</option>
+                                    <option value="KIRIKKALE">KIRIKKALE</option>
+                                    <option value="KIRKLARELİ">KIRKLARELİ</option>
+                                    <option value="KIRŞEHİR">KIRŞEHİR</option>
+                                    <option value="KOCAELİ">KOCAELİ</option>
+                                    <option value="KONYA">KONYA</option>
+                                    <option value="KÜTAHYA">KÜTAHYA</option>
+                                    <option value="MALATYA">MALATYA</option>
+                                    <option value="MANİSA">MANİSA</option>
+                                    <option value="MARDİN">MARDİN</option>
+                                    <option value="MUĞLA">MUĞLA</option>
+                                    <option value="MUŞ">MUŞ</option>
+                                    <option value="NEVŞEHİR">NEVŞEHİR</option>
+                                    <option value="NİĞDE">NİĞDE</option>
+                                    <option value="ORDU">ORDU</option>
+                                    <option value="OSMANİYE">OSMANİYE</option>
+                                    <option value="RİZE">RİZE</option>
+                                    <option value="SAKARYA">SAKARYA</option>
+                                    <option value="SAMSUN">SAMSUN</option>
+                                    <option value="ŞANLIURFA">ŞANLIURFA</option>
+                                    <option value="SİİRT">SİİRT</option>
+                                    <option value="SİNOP">SİNOP</option>
+                                    <option value="ŞIRNAK">ŞIRNAK</option>
+                                    <option value="SİVAS">SİVAS</option>
+                                    <option value="TEKİRDAĞ">TEKİRDAĞ</option>
+                                    <option value="TOKAT">TOKAT</option>
+                                    <option value="TRABZON">TRABZON</option>
+                                    <option value="TUNCELİ">TUNCELİ</option>
+                                    <option value="UŞAK">UŞAK</option>
+                                    <option value="VAN">VAN</option>
+                                    <option value="YALOVA">YALOVA</option>
+                                    <option value="YOZGAT">YOZGAT</option>
+                                    <option value="ZONGULDAK">ZONGULDAK</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Yaklaşık İhtiyaç Miktarı</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Yaklaşık İhtiyaç Miktarı">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Adres</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <a href="javascript:;" class="btn btn-primary pull-right">Gönder</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

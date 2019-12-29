@@ -18,7 +18,7 @@ namespace BHOurProject.Models.Entity
         public string Gender { get; set; }
         public bool MilitaryStatus { get; set; }
         public string Note { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
     }
 }

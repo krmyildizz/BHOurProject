@@ -19,10 +19,10 @@ namespace BHOurProject.Models.Entity
         public string Fax { get; set; }
         public string MapPath { get; set; }
         public string DetailInformation { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
 
-        public virtual List<Machine> MachineList { get; set; }
+        public virtual ICollection<Machine> MachineList { get; set; }
 
     }
 }

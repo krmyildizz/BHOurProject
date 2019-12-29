@@ -14,7 +14,7 @@ namespace BHOurProject.Models.Entity
         public string Text { get; set; }
         public string Image { get; set; }
         public DateTime Date { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
     }
 }

@@ -13,10 +13,8 @@ namespace BHOurProject.Models.Entity
         public int Id { get; set; }
         public int CompanyId { get; set; }
         public string Name { get; set; }
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
-
-
         public virtual Company Company { get; set; }
 
     }
