@@ -5627,10 +5627,11 @@ a.readmore > span {
         line-height: 1.7em;
         margin-bottom: 60px;
         margin-top: 30px;
+        margin-left: 10px;
     }
 
     .single-blog-list.two-column li {
-        width: 50%;
+        width: 32%;
         float: left;
         position: relative;
     }
@@ -5689,12 +5690,23 @@ a.readmore > span {
 }
 
 .single-blog-list .post-wrap {
-    padding-left: 80px;
+    /*padding-left: 80px;*/
 }
 
 .single-blog-list .post-text {
     padding-left: 0;
+    border: 1px solid #cfcfcf;
+    padding: 10px;
 }
+
+    .single-blog-list .post-text p {
+        color: #333333;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
 
     .single-blog-list .post-text h3 {
         font-size: 24px;
@@ -5706,29 +5718,30 @@ a.readmore > span {
 }
 
 .single-blog-list.two-column .date-box {
-    left: 4%;
+    left: 0%;
 }
 
 .single-blog-list .date-box .day, .single-blog-list .date-box .month, .single-blog-list .date-box .year {
-    font-size: 26px;
+    font-size: 15px;
     color: #fff;
-    padding-top: 18px;
-    width: 60px;
-    height: 60px;
+    padding-top: 10px;
+    background: #727272;
+    width: 40px;
+    height: 40px;
 }
 
 .single-blog-list .date-box .day {
-    line-height: 20px;
+    /*line-height: 20px;*/
 }
 
 .single-blog-list .date-box .month {
-    font-size: 14px;
+    font-size: 11px;
     background: #333;
 }
 
 .single-blog-list .date-box .year {
-    font-size: 17px;
-    background: #0094d9;
+    font-size: 15px;
+    background: #727272;
 }
 
 .blog-list .dark.post-text h3 a {
@@ -5791,22 +5804,25 @@ a.btn-text {
 .blog-list .date-box {
     text-align: center;
     position: absolute;
+    left: 0;
+    top: 0;
 }
 
     .blog-list .date-box .day, .blog-list .date-box .month, .blog-list .date-box .year {
-        font-size: 26px;
+        font-size: 15px;
         color: #fff;
-        padding-top: 18px;
-        width: 60px;
-        height: 60px;
+        padding-top: 12px;
+        width: 40px;
+        height: 40px;
+        background: #727272;
     }
 
     .blog-list .date-box .day {
-        line-height: 20px;
+        /*line-height: 20px;*/
     }
 
     .blog-list .date-box .month {
-        font-size: 14px;
+        font-size: 11px;
         background: #333;
     }
 
@@ -5821,6 +5837,7 @@ a.btn-text {
 
 .blog-list .post-wrap {
     padding-left: 0px;
+    position: relative;
 }
 
 .blog-list .post-img img {

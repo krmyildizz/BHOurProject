@@ -19,9 +19,9 @@ namespace BHOurProject.Controllers
             ViewBag.Company = db.Company.Where(x => x.IsActive).ToList().Select(i => new Company
             {
                 Id = i.Id,
-                DetailInformation = i.DetailInformation.Length > 170 ? i.DetailInformation.Substring(0, 170) + "..." : i.DetailInformation,
+                DetailInformation = i.DetailInformation,
                 Department = i.Department,
-                Image=i.Image
+                Image = i.Image
             });
             ViewBag.News = db.News.Take(3).ToList();
             ViewBag.product = db.Product.ToList(); ;
@@ -36,6 +36,7 @@ namespace BHOurProject.Controllers
         }
         public PartialViewResult About()
         {
+            @ViewBag.Message = "Hakkımızda";
             return PartialView();
         }
         public ActionResult ColorPicker()

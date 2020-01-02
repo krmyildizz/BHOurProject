@@ -3087,6 +3087,7 @@ figure.snip1321 {
     text-align: center;
     -webkit-perspective: 50em;
     perspective: 50em;
+    max-height:370px;
 }
 
     figure.snip1321 * {

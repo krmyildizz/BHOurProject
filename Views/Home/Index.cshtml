@@ -75,11 +75,13 @@
                     <div class="feature-box text-center xs-mb-30 feature-box-default-bg center-feature">
                         <i class="icon-streetsign font-40px"></i>
                         <h4 class="mt-0 font-600">@item.Department</h4>
-                        <p class="font-400">@item.DetailInformation</p>
-                        <a href="/Machine/MachineDetail/@item.Id">Detaylı Bilgi</a>
-                    </div>
-                </div>
-            }
+                        <p class="font-400" id="tesisText" style="    height: 150px;
+    display: block;
+    overflow: hidden">@item.DetailInformation</p>
+    <a href="/Machine/MachineDetail/@item.Id">Detaylı Bilgi</a>
+</div>
+</div>
+}
         </div>
     </div>
 </section>
@@ -87,7 +89,7 @@
 <!--== Hakkımızda ==-->
 <section class="white-bg xs-pb-100" id="about">
     <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
-        <div class="bg-flex-holder bg-flex-cover" style="background-image: url(../../Content/assets/images/banner-about.jpg);">
+        <div class="bg-flex-holder bg-flex-cover" style="background-image: url(../../Content/assets/images/banner-about.jpg);max-height:500px;">
         </div>
     </div>
     <div class="container-fluid">
@@ -332,4 +334,22 @@
                 @Html.Action("Category", "Category")
             </div>
         </div>*@
+    @section Scripts
+{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //var url = window.location.href;
+                //var arr = url.split('#')[1];
+                //$('a.page-scroll').removeAttr("href");
+                //$('a.page-scroll').attr("href", arr);
+                //setTimeout(function () {
+                //    $("nav.navbar.bootsnav ul.nav > li > a[data-link='" + arr + "']").click();
+                //}, 3000);
+
+            });
+        </script>
+    }
+
+
+
 </section>

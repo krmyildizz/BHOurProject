@@ -9,7 +9,7 @@ namespace BHOurProject.Models.Context
 {
     public class DataContext:DbContext
     {
-        public DataContext() : base("name=DBConnectionString")
+        public DataContext() : base("name=u9172314_alperdb")
         {
 
         }

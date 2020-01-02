@@ -60,7 +60,7 @@
                 <div class="attr-nav hidden-xs sm-display-none">
                     <ul>
                         <li>
-                            <a href="/Home/ColorPicker" style="background:#ff0000;
+                            <a href="/Home/ColorPicker" style="background:#b71414;
     color:#ffffff;">RENK KARTELASI</a>
                         </li>
                     </ul>
@@ -76,9 +76,9 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
                         <li><a class="page-scroll" href="/Home">Ana Sayfa</a></li>
-                        <li><a class="page-scroll" href="/Home#tesis">Tesislerimiz</a></li>
+                        <li><a class="page-scroll" href="/Home" data-link="#tesis">Tesislerimiz</a></li>
                         <li><a class="page-scroll" href="/Category">Ürünlerimiz</a></li>
-                        <li><a class="page-scroll" href="/Home#about">Hakkımızda</a></li>
+                        <li><a class="page-scroll" href="/Home#about" data-link="about">Hakkımızda</a></li>
                         <li><a class="page-scroll" href="/News">Haberler</a></li>
                         <li class="dropdown">
                             <a class="page-scroll" href="/Forms">Formlar</a><ul class="dropdown-menu" role="menu">
@@ -124,7 +124,6 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 
     <script src="~/Scripts/js/jquery-min.js"></script>
     <script src="~/Content/assets/js/smoothscroll.js"></script>
@@ -165,6 +164,8 @@
     <script src="~/Scripts/js/form-validator.min.js"></script>
     <script src="~/Scripts/js/contact-form-script.js"></script>
     <script src="~/Scripts/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false);
 
 </body>
 </html>
