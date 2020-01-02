@@ -362,6 +362,7 @@ jQuery(function ($) {
                 scrollTop: $($anchor.attr('href')).offset().top - 50
             }, 1000, 'easeInOutExpo');
             event.preventDefault();
+          
         });
 
         $(window).on("scroll", function () {
