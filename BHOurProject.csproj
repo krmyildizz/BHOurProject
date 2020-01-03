@@ -129,8 +129,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AreaAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CertificateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -211,13 +209,6 @@
     <Content Include="Content\Admin\assets\js\vmap.sampledata.js" />
     <Content Include="Content\Admin\assets\js\widgets.js" />
     <Content Include="Content\Admin\assets\scss\style.css" />
-    <Content Include="Areas\ElaAdmin-master\charts-chartjs.html" />
-    <Content Include="Areas\ElaAdmin-master\charts-flot.html" />
-    <Content Include="Areas\ElaAdmin-master\charts-peity.html" />
-    <Content Include="Areas\ElaAdmin-master\font-fontawesome.html" />
-    <Content Include="Areas\ElaAdmin-master\font-themify.html" />
-    <Content Include="Areas\ElaAdmin-master\forms-advanced.html" />
-    <Content Include="Areas\ElaAdmin-master\forms-basic.html" />
     <Content Include="Content\Admin\images\.gitignore" />
     <Content Include="Content\Admin\images\admin.jpg" />
     <Content Include="Content\Admin\images\avatar\1.jpg" />
@@ -231,25 +222,6 @@
     <Content Include="Content\Admin\images\favicon.png" />
     <Content Include="Content\Admin\images\logo.png" />
     <Content Include="Content\Admin\images\logo2.png" />
-    <Content Include="Areas\ElaAdmin-master\index.html" />
-    <Content Include="Areas\ElaAdmin-master\maps-gmap.html" />
-    <Content Include="Areas\ElaAdmin-master\maps-vector.html" />
-    <Content Include="Areas\ElaAdmin-master\page-login.html" />
-    <Content Include="Areas\ElaAdmin-master\page-register.html" />
-    <Content Include="Areas\ElaAdmin-master\pages-forget.html" />
-    <Content Include="Areas\ElaAdmin-master\tables-basic.html" />
-    <Content Include="Areas\ElaAdmin-master\tables-data.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-alerts.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-badges.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-buttons.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-cards.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-grids.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-modals.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-progressbar.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-switches.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-tabs.html" />
-    <Content Include="Areas\ElaAdmin-master\ui-typgraphy.html" />
-    <Content Include="Areas\ElaAdmin-master\widgets.html" />
     <Content Include="Content\assets\css\animate.css" />
     <Content Include="Content\assets\css\bootsnav.css" />
     <Content Include="Content\assets\css\bootstrap.min.css" />
@@ -344,7 +316,6 @@
     <Content Include="Content\revolution\js\revolution.extension.parallax.min.js" />
     <Content Include="Content\revolution\js\revolution.extension.slideanims.min.js" />
     <Content Include="Content\revolution\js\revolution.extension.video.min.js" />
-    <Content Include="essence-free-opl\index.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1145,13 +1116,9 @@
     <Content Include="Scripts\js\scrolling-nav.js" />
     <Content Include="Scripts\js\waypoints.min.js" />
     <Content Include="Scripts\js\wow.js" />
-    <Content Include="essence-free-opl\license.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="essence-free-opl\.DS_Store" />
     <Content Include="Scripts\js\.DS_Store" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\ElaAdmin-master\.github\ISSUE_TEMPLATE.md" />
     <Content Include="Content\Admin\assets\css\style.css.map" />
     <Content Include="Content\Admin\assets\fonts\icomoon\icomoon.eot" />
     <Content Include="Content\Admin\assets\fonts\icomoon\icomoon.ttf" />
@@ -1159,11 +1126,6 @@
     <Content Include="Content\Admin\assets\scss\style.css.map" />
     <Content Include="Content\Admin\assets\scss\style.scss" />
     <Content Include="Content\Admin\images\logo.psd" />
-    <Content Include="Areas\ElaAdmin-master\README.md" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\View.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -1288,7 +1250,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
