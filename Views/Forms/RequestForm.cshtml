@@ -3,7 +3,7 @@
     ViewBag.Title = "RequestForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="white-bg" style="padding-top:80px;">
+<section ng-app="myApp" ng-controller="RequestController" class="white-bg" style="padding-top:80px;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 xs-mb-50">
@@ -15,38 +15,38 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Firma Adı</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firma Adı">
+                            <input ng-model="selectedValue.CompanyName" type="text" class="form-control" id="CompanyName" placeholder="Firma Adı">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Firma Yetkilisi</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Firma Yetkilisi">
+                            <input ng-model="selectedValue.CompanyRepresentative" type="text" class="form-control" id="companyRepresentive" placeholder="Firma Yetkilisi">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Telefon</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Telefon">
+                            <input ng-model="selectedValue.PhoneNumber" type="number" class="form-control" id="phone" placeholder="Telefon">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Faks</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Faks">
+                            <input ng-model="selectedValue.TaxNumber" type="number" class="form-control" id="faks" placeholder="Faks">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Mail Adresi</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Mail Adresi">
+                            <input type="email" ng-model="selectedValue.MailAddress" class="form-control" id="email" placeholder="Mail Adresi">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6" style="padding-left:0;">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">İlgilenen Ürün</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select ng-model="selectedValue.ProductOfInterest" class="form-control" id="productOfInterest">
                                     <option value="0">Seçiniz</option>
                                     <option value="Panel">Panel</option>
                                     <option value="Accesories">Aksesuar</option>
@@ -62,7 +62,7 @@
                         <div class="col-md-6" style="padding-right:0;">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Şehir</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select ng-model="selectedValue.City" class="form-control" id="city">
                                     <option value="0">Seçiniz</option>
                                     <option value="ADANA">ADANA</option>
                                     <option value="ADIYAMAN">ADIYAMAN</option>
@@ -152,18 +152,24 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Yaklaşık İhtiyaç Miktarı</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Yaklaşık İhtiyaç Miktarı">
+                            <input type="email" ng-model="selectedValue.Quantity" class="form-control" id="quantity" placeholder="Yaklaşık İhtiyaç Miktarı">
                         </div>
                     </div>
-                    <div class="row">
+                    @*<div class="row">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Adres</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea ng-model="selectedValue.Address" class="form-control" id="address" rows="3"></textarea>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Açıklama</label>
+                            <textarea ng-model="selectedValue.Explanation" class="form-control" id="explanation" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <a href="javascript:;" class="btn btn-primary pull-right">Gönder</a>
+                            <a href="javascript:;" ng-click="createUser()" class="btn btn-primary pull-right">Gönder</a>
                         </div>
                     </div>
                 </div>
@@ -172,3 +178,7 @@
     </div>
 
 </section>
+@section scripts {
+
+    <script src="~/Scripts/page/requestForms.js"></script>
+}
