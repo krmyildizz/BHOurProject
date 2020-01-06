@@ -25,6 +25,7 @@ namespace BHOurProject
         .Include(
             //"~/Scripts/angular.js",
             "~/Scripts/pages/requestForms.js",
+             "~/Scripts/Admin/category.js",
             "~/Scripts/angular.min.js",
             "~/Scripts/ui-bootstrap-modal.js",
             "~/Scripts/angular-animate.js",
@@ -34,9 +35,27 @@ namespace BHOurProject
             "~/Scripts/angular-sanitize.js"
             
             )
-        );
 
-         
+        );
+            bundles.Add(new ScriptBundle("~/bundles/angularAdmin")
+   .Include(
+       //"~/Scripts/angular.js",
+       
+        "~/Scripts/Admin/category.js",
+       "~/Scripts/angular.min.js",
+       "~/Scripts/ui-bootstrap-modal.js",
+       "~/Scripts/angular-animate.js",
+       "~/Scripts/angular-mocks.js",
+       "~/Scripts/angular-route.js",
+       "~/Scripts/angular-resource.js",
+       "~/Scripts/angular-sanitize.js"
+
+       )
+
+   );
+
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

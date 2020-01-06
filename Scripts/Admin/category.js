@@ -1,6 +1,5 @@
-﻿var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize',]);
-var myAppAdmin = angular.module('myAppAdmin', ['ngRoute', 'ngSanitize',]);
-myApp.controller('RequestController', ['$scope', '$http', function ($scope, $http) {
+﻿var myAppAdmin = angular.module('myAppAdmin');
+myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope, $http) {
 
     //Buttons Settings
     $scope.submit = true;
@@ -9,33 +8,25 @@ myApp.controller('RequestController', ['$scope', '$http', function ($scope, $htt
     $scope.userid = true;
 
     $scope.selectedValue = {};
-
-
-    //Create New User
-    $scope.createUser = function () {
+    $scope.getCategoryList = function () {
 
         //$http POST function
         $http({
-
             method: "post",
-            url: "/Forms/SendMailAndSaveRequestForm",
-            data: JSON.stringify($scope.selectedValue),
+            url: "/Admin/Category/GetCategoryList",
+            data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-
-            //$scope.users.push(response.data);
-            alert("User has created Successfully")
+            $scope.getCategoryList = response.data;
+            
 
         }, function errorCallback(response) {
 
-            alert("Error. while created user Try Again!");
+                console.log(response.errorCallback);
 
         });
 
     };
-
-
-   
 
     //Set $scope on Edit button click
     $scope.editUser = function (user) {
@@ -58,7 +49,7 @@ myApp.controller('RequestController', ['$scope', '$http', function ($scope, $htt
         $scope.userid = true;
     };
 
- 
+
 
 
 }]);
