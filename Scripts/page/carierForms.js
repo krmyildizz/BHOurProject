@@ -1,15 +1,7 @@
 ﻿var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize',]);
 myApp.controller('CarrierController', ['$scope', '$http', function ($scope, $http) {
 
-    //Buttons Settings
-    $scope.submit = true;
-    $scope.update = false;
-    $scope.cancel = false;
-    $scope.userid = true;
-
     $scope.selectedValue = {};
-
-
     //Create New User
     $scope.sendMailAndSaveCarrierForm = function () {
         $http({
@@ -25,6 +17,7 @@ myApp.controller('CarrierController', ['$scope', '$http', function ($scope, $htt
             alert("Error. while created user Try Again!");
 
         });
+
 
     };
 }]);

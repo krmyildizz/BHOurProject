@@ -17,9 +17,46 @@ namespace BHOurProject.Areas.Admin.Controllers
         }
         [HttpPost]
         public string GetCategoryList()
-        {
+        {   
             List<Category> list = Category.GetCategoryList();
             return JsonConvert.SerializeObject(list);
+        }
+        [HttpPost]
+        public string UpdateCategory(Category category)
+        {
+            bool result = false;
+            Category cat = new Category();
+            {
+                cat.Id = category.Id;
+                cat.Name = category.Name;
+                cat.IsActive = category.IsActive;
+                result = cat.UpdateCategory(category);
+            }
+            string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
+            return JsonConvert.SerializeObject(message);
+        }
+        [HttpPost]
+        public string DeteteCategory(int id)
+        {
+            bool result = false;
+            Category cat = new Category();
+            {
+                result = cat.DeleteCategory(id);
+            }
+            string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
+            return JsonConvert.SerializeObject(message);
+        }
+
+        [HttpPost]
+        public string SaveCategory(Category category)
+        {
+            bool result = false;
+            Category cat = new Category();
+            {
+                result = cat.AddCategory(category);
+            }
+            string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
+            return JsonConvert.SerializeObject(message);
         }
     }
 }

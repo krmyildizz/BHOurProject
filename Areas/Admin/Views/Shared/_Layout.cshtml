@@ -724,13 +724,13 @@
             </section>
         </div>
     </section>
-    @RenderSection("Scripts", required: false)
 
-    @Scripts.Render("~/App_Start/bundles/jquery")
-    @Scripts.Render("~/App_Start/bundles/bootstrap")
-    @Scripts.Render("~/App_Start/bundles/angularAdmin")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularAdmin")
+
     <!-- Vendor -->
-    <script src="~/App_Start/"></script>
+
     <script src="~/Content/Admin/assets/vendor/jquery/jquery.js"></script>
     <script src="~/Content/Admin/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
     <script src="~/Content/Admin/assets/vendor/bootstrap/js/bootstrap.js"></script>
@@ -774,7 +774,7 @@
 
     <!-- Theme Initialization Files -->
     <script src="assets/javascripts/theme.init.js"></script>
-
+    @RenderSection("Scripts", required: false)
 
     <!-- Examples -->
     <script src="assets/javascripts/dashboard/examples.dashboard.js"></script>

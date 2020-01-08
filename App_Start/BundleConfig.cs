@@ -39,8 +39,7 @@ namespace BHOurProject
         );
             bundles.Add(new ScriptBundle("~/bundles/angularAdmin")
    .Include(
-       //"~/Scripts/angular.js",
-       
+       "~/Scripts/angular.js",
         "~/Scripts/Admin/category.js",
        "~/Scripts/angular.min.js",
        "~/Scripts/ui-bootstrap-modal.js",
