@@ -15,6 +15,8 @@ namespace BHOurProject.Models.Context
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer<DataContext>(null);
             base.OnModelCreating(modelBuilder);
         }

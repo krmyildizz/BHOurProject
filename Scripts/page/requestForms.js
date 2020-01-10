@@ -1,4 +1,5 @@
-﻿var myApp = angular.module('myApp', ['ngRoute','ngSanitize',]);
+﻿var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize',]);
+var myAppAdmin = angular.module('myAppAdmin', ['ngRoute', 'ngSanitize',]);
 myApp.controller('RequestController', ['$scope', '$http', function ($scope, $http) {
 
     //Buttons Settings
