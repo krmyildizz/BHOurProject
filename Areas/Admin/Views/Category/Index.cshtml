@@ -2,90 +2,93 @@
 @{
     ViewBag.Title = "Index";
 }
+<header class="page-header">
+    <h2>Kategoriler</h2>
 
-<section role="main" class="content-body">
-    <header class="page-header">
-        <h2>Editable Tables</h2>
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Ana Sayfa</span></li>
+            <li><span>Kategoriler</span></li>
+        </ol>
+    </div>
+</header>
 
-        <div class="right-wrapper pull-right">
-            <ol class="breadcrumbs">
-                <li>
-                    <a href="index.html">
-                        <i class="fa fa-home"></i>
-                    </a>
-                </li>
-                <li><span>Tables</span></li>
-                <li><span>Editable</span></li>
-            </ol>
-
-            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+<!-- start: page -->
+<section class="panel" ng-controller="CategoryController">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <button id="addToTables" ng-click="openAddPage()" class="btn btn-success" style="margin-right:5px;">Ekle <i class="fa fa-plus"></i></button>
         </div>
+
+        <h2 class="panel-title">Kategoriler</h2>
     </header>
+    <div class="panel-body">
+        <div id="datatable-editable_wrapper" class="dataTables_wrapper no-footer">
+            @*<div class="row datatables-header form-inline"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable-editable_length"><label><div class="select2-container" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">50</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"></div><select name="datatable-editable_length" aria-controls="datatable-editable" class="select2-offscreen" tabindex="-1" title=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-12 col-md-6"><div id="datatable-editable_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="datatable-editable"></label></div></div></div><div class="table-responsive">*@
+            <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 121px;">İşlemler</th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 247px;" ng-show="EnableEdit==false && isAddCategory==false">No</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 323px;">Kategori Adı</th>
+                        <th class="sorting text-center" style="width:10%;" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Aktif</th>
 
-    <!-- start: page -->
-    <section class="panel" ng-controller="CategoryController">
-        <header class="panel-heading">
-            <div class="panel-actions">
-                <a href="#" class="fa fa-caret-down"></a>
-                <a href="#" class="fa fa-times"></a>
-            </div>
+                    </tr>
+                </thead>
+                <tbody>
 
-            <h2 class="panel-title">Default</h2>
-        </header>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="mb-md">
-                        <button id="addToTables" ng-click="openAddPage()" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
-                    </div>
+                    <tr ng-show="EnableEdit==false && isAddCategory==false" class="gradeA even" role="row" ng-repeat="item in getCategoryList">
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="mb-xs mt-xs mr-xs btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">İşlemler <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>  <a href="#" ng-click="editCategory(item)" class="on-default edit-row"><i class="fa fa-pencil"></i><span>Güncelle</span></a></li>
+                                    <li><a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i><span>Sil</span></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="sorting_1">{{item.Id}}</td>
+                        <td ng-model="selected.Name">{{item.Name}}</td>
+                        <td class="text-center" ng-model="selected.IsActive">{{item.IsActive}}</td>
+
+                    </tr>
+                    <tr ng-show="EnableEdit==true">
+                        <td>
+                            <a href="#" ng-click="updateCategory(selected)" class="btn btn-success btn-sm">Güncelle</a>
+                            <a href="#" ng-click="cancelCategory()" class="btn btn-danger btn-sm">Geri</a>
+                        </td>
+                        <td><input type="text" ng-model="selected.Name" class="form-control" /></td>
+                        <td style="width:5%;"><input type="checkbox" ng-model="selected.IsActive" data-toggle="toggle" data-style="ios" /> </td>
+                    </tr>
+                    <tr id="addToTable">
+                        <td>
+                            <a href="#" ng-click="addCategory(selected)" class="btn btn-success btn-sm">Ekle</a>
+                            <a href="#" ng-click="cancelCategory()" class="btn btn-danger btn-sm">Geri</a>
+                        </td>
+                        <td><input type="text" ng-model="selectedValue.Name" class="form-control" /></td>
+                        <td style="width:5%;"><input type="checkbox" ng-model="selectedValue.IsActive" data-toggle="toggle" data-style="ios" /> </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div><div class="row datatables-footer">
+            <div class="col-md-12">
+                <div class="dataTables_paginate paging_bs_normal" id="datatable-editable_paginate">
+                    <ul class="pagination">
+                    <li class="prev disabled"><a href="#"><span class="fa fa-chevron-left"></span></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#"><span class="fa fa-chevron-right"></span></a></li></ul>
                 </div>
             </div>
-            <div id="datatable-editable_wrapper" class="dataTables_wrapper no-footer">
-                @*<div class="row datatables-header form-inline"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable-editable_length"><label><div class="select2-container" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">50</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"></div><select name="datatable-editable_length" aria-controls="datatable-editable" class="select2-offscreen" tabindex="-1" title=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-12 col-md-6"><div id="datatable-editable_filter" class="dataTables_filter"><label><input type="search" class="form-control" placeholder="Search" aria-controls="datatable-editable"></label></div></div></div><div class="table-responsive">*@
-                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
-                        <thead>
-                            <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 247px;" ng-show="EnableEdit==false && isAddCategory==false">No</th><th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 323px;">Category Name</th><th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 293px;">IsActive</th><th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 121px;">Actions</th></tr>
-                        </thead>
-                        <tbody>
-
-                            <tr ng-show="EnableEdit==false && isAddCategory==false" class="gradeA even" role="row" ng-repeat="item in getCategoryList">
-                                <td class="sorting_1">{{item.Id}}</td>
-                                <td ng-model="selected.Name">{{item.Name}}</td>
-                                <td ng-model="selected.IsActive">{{item.IsActive}}</td>
-                                <td class="actions">
-                                    <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                    <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                    <a href="#" ng-click="editCategory(item)" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                    <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr ng-show="EnableEdit==true">
-                                <td><input type="text" ng-model="selected.Name" /></td>
-                                <td><input type="text" ng-model="selected.IsActive" /></td>
-                                <td class="actions">
-                                    <a href="#" ng-click="updateCategory(selected)" class="on-editing save-row"><i class="fa fa-save"></i></a>
-                                    <a href="#" ng-click="cancelCategory()" class=" on-editing cancel-row"><i class="fa fa-times"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr id="addToTable">
-                                <td><input type="text" ng-model="selectedValue.Name" /></td>
-                                <td><input type="text" ng-model="selectedValue.IsActive" /></td>
-                                <td class="actions">
-                                    <a href="#" ng-click="addCategory(selected)" class="on-editing save-row"><i class="fa fa-save"></i></a>
-                                    <a href="#" ng-click="cancelCategory()" class=" on-editing cancel-row"><i class="fa fa-times"></i></a>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div><div class="row datatables-footer"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="datatable-editable_info" role="status" aria-live="polite">Showing 1 to 50 of 57 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_bs_normal" id="datatable-editable_paginate"><ul class="pagination"><li class="prev disabled"><a href="#"><span class="fa fa-chevron-left"></span></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#"><span class="fa fa-chevron-right"></span></a></li></ul></div></div></div>
-            </div>
         </div>
-    </section>
-    <!-- end: page -->
+    </div>
+    </div>
 </section>
+<!-- end: page -->
 @section scripts {
 
     <script src="~/Scripts/Admin/category.js"></script>
