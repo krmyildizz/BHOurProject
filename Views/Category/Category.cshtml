@@ -4,8 +4,8 @@
 @{
     var selectedCategory = Url.RequestContext.RouteData.Values["id"];
 }
-<h2>Kategoriler</h2>
-<div class="list-group ">
+<h2>Kategoriler <span class="category-btn" id="CategoryButton"><i class="tr-icon ion-android-menu"></i></span></h2>
+<div class="list-group" id="CategoryGroup">
     @foreach (var item in ViewBag.Data)
     {
         if (selectedCategory != null)
