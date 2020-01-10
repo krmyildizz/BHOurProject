@@ -475,7 +475,9 @@
 	.cbp-l-filters-alignCenter .cbp-filter-item{margin: 0 18px;}
 	.md-icon.left-icon li{margin-right: 4px;}
 	.skillbar-style-01 .skillbar{width:88%;}
-  .col-inner.spacer{padding: 0px;}
+    .col-inner.spacer {
+        padding: 10px;
+    }
 }
 
 

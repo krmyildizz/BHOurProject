@@ -4,13 +4,9 @@ jQuery(function ($) {
     'use strict';
 
     jQuery(document).ready(function ($) {
-        //var url = window.location.href;
-        //var arr = url.split('#')[1];
-        //setTimeout(function () {
-        //    $("nav.navbar.bootsnav ul.nav > li > a[data-link='" + arr + "']").click();
-        //}, 3000);
-
-
+        $("#CategoryButton").click(function () {
+            $("#CategoryGroup").slideToggle();
+        });
 
         $(".hover").mouseleave(
             function () {
@@ -362,7 +358,7 @@ jQuery(function ($) {
                 scrollTop: $($anchor.attr('href')).offset().top - 50
             }, 1000, 'easeInOutExpo');
             event.preventDefault();
-          
+
         });
 
         $(window).on("scroll", function () {
