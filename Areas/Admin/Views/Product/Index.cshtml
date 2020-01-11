@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/dropzone/css/basic.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/dropzone/css/dropzone.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/summernote/summernote.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/summernote/summernote-bs3.css" />
+}
+
+<header class="page-header">
+    <h2>Ürünler</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Ana Sayfa</span></li>
+            <li><span>Ürünler</span></li>
+        </ol>
+    </div>
+</header>
+<!-- start: page -->
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a class="modal-with-form buttons btn btn-success" href="#modalForm">Ekle <i class="fa fa-plus"></i></a>
+        </div>
+
+        <h2 class="panel-title">Ürünler</h2>
+    </header>
+    <div class="panel-body">
+        <table class="table table-no-more table-bordered table-striped mb-none">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th class="hidden-xs hidden-sm">Company</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right hidden-xs hidden-sm">Change</th>
+                    <th class="text-right">Change %</th>
+                    <th class="text-right">Open</th>
+                    <th class="text-right hidden-xs hidden-sm">High</th>
+                    <th class="text-right hidden-xs hidden-sm">Low</th>
+                    <th class="text-center">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-title="Code">AAC</td>
+                    <td data-title="Company" class="hidden-xs hidden-sm">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
+                    <td data-title="Price" class="text-right">$1.38</td>
+                    <td data-title="Change" class="text-right hidden-xs hidden-sm">-0.01</td>
+                    <td data-title="Change %" class="text-right">-0.36%</td>
+                    <td data-title="Open" class="text-right">$1.39</td>
+                    <td data-title="High" class="text-right hidden-xs hidden-sm">$1.39</td>
+                    <td data-title="Low" class="text-right hidden-xs hidden-sm">$1.38</td>
+                    <td data-title="Volume" class="text-center">
+                        <a href="#" class="mb-xs mt-xs mr-xs btn btn-warning btn-sm">Güncelle</a>
+                        <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger btn-sm">Sil</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<div class="panel-body hidden" id="ProductAdd">
+    <header class="panel-heading">
+        <h2 class="panel-title">Ürün Ekle</h2>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Kategori</h5>
+        </div>
+        <div class="col-md-12">
+            <select class="form-control input-sm mb-md">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Görseli</h5>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <form action="/upload" class="dropzone dz-square" id="dropzone-example"></form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-bottom:5px;">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması</h5>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'>Start typing...</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right" style="margin-top:10px;">
+            <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger">Temizle</a>
+            <a href="#" class="mb-xs mt-xs mr-xs btn btn-success">Ürün Ekle</a>
+        </div>
+    </div>
+</div>
+<div id="ProductUpdate" class="panel-body hidden">
+    <header class="panel-heading">
+        <h2 class="panel-title">Ürün Ekle</h2>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Kategori</h5>
+        </div>
+        <div class="col-md-12">
+            <select class="form-control input-sm mb-md">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Görseli</h5>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <form action="/upload" class="dropzone dz-square" id="dropzone-example"></form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-bottom:5px;">
+            <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması</h5>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'>Start typing...</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right" style="margin-top:10px;">
+            <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger">Temizle</a>
+            <a href="#" class="mb-xs mt-xs mr-xs btn btn-success">Ürün Ekle</a>
+        </div>
+    </div>
+</div>
+<!-- end: page -->
+@section Scripts {
+    <script src="~/Content/Admin/assets/vendor/dropzone/dropzone.js"></script>
+    <script src="~/Content/Admin/assets/vendor/summernote/summernote.js"></script>
+    <script type="text/javascript">
+        $('.summernote').summernote({
+            height: 200,
+            codemirror: {
+                theme: 'monokai'
+            }
+        });
+    </script>
+
+}
