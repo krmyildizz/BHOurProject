@@ -48,6 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr ng-repeat="item in getCompanyList">
                         <td data-title="Code">{{item.Department}}</td>
                         <td data-title="Company" class="hidden-xs hidden-sm">{{item.Phone}}</td>
@@ -60,7 +61,9 @@
                         <td data-title="Volume" class="text-right" style="width:10%;">
                             <a href="#" class="mb-xs mt-xs mr-xs btn btn-warning btn-sm" ng-click="editCompany(item)">Güncelle</a>
                             <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger btn-sm" ng-click="deleteCompany(item.Id)">Sil</a>
-                        </td>
+                      </td>
+                    <tr>
+                     
                     </tr>
                 </tbody>
             </table>
