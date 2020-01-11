@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "ReferenceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    a:focus {
+        outline: none;
+    }
+
+    .portfolioFilter {
+        padding: 15px 0;
+    }
+
+        .portfolioFilter a {
+            margin-right: 6px;
+            color: #666;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            padding: 4px 15px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+            .portfolioFilter a.current {
+                background: #1e1e1e;
+                border: 1px solid #1e1e1e;
+                color: #f9f9f9;
+            }
+
+    .portfolioContainer {
+        border: 1px solid #eee;
+        border-radius: 3px;
+    }
+
+    img {
+        margin: 5px;
+        max-width: 100%;
+    }
+
+    .isotope-item {
+        z-index: 2;
+    }
+
+    .isotope-hidden.isotope-item {
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .isotope,
+    .isotope .isotope-item {
+        /* change duration value to whatever you like */
+        -webkit-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+    }
+
+    .isotope {
+        -webkit-transition-property: height, width;
+        -moz-transition-property: height, width;
+        transition-property: height, width;
+    }
+
+        .isotope .isotope-item {
+            -webkit-transition-property: -webkit-transform, opacity;
+            -moz-transition-property: -moz-transform, opacity;
+            transition-property: transform, opacity;
+        }
+</style>
+
+<section class="white-bg" style="padding-top:80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="portfolioFilter clearfix">
+                    <a href="#" data-filter="*" class="current">Tümü</a>
+                    <a href="#" data-filter=".webTemplates">Web Templates</a>
+                    <a href="#" data-filter=".logos">Logos</a>
+                    <a href="#" data-filter=".drawings">Drawings</a>
+                    <a href="#" data-filter=".a">a</a>
+                </div>
+            </div>
+            <div class="portfolioContainer">
+
+
+                <a rel="example_group" class="webTemplates objects" title="Custom title" href="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_b.jpg">
+                    <img alt="" src="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_m.jpg" />
+                </a>
+
+                <a rel="example_group" class="a" title="Custom title" href="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_b.jpg">
+                    <img alt="" src="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_m.jpg" />
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script src='https://isotope.metafizzy.co/v1/jquery.isotope.min.js'></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("a[rel=example_group]").fancybox();
+            var $container = $('.portfolioContainer');
+            $container.isotope({
+                filter: '*',
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+
+            $('.portfolioFilter a').click(function () {
+                $('.portfolioFilter .current').removeClass('current');
+                $(this).addClass('current');
+
+                var selector = $(this).attr('data-filter');
+                $container.isotope({
+                    filter: selector,
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+
+}

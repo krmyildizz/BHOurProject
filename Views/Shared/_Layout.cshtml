@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/layers.css">
     <link rel="stylesheet" type="text/css" href="~/Content/revolution/css/navigation.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <link href="~/Content/assets/fancybox/jquery.fancybox.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -75,17 +76,27 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
                         <li><a class="page-scroll" href="/Home">Ana Sayfa</a></li>
-                        <li><a class="page-scroll" href="/Home#tesis">Tesislerimiz</a></li>
+                        <li>
+                            <a class="page-scroll" href="/Reference/ReferenceList" data-link="about">Referanslarımız</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="page-scroll" href="javascript:;">Kurumsal</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a class="page-scroll" href="/Home#about" data-link="about">Hakkımızda</a></li>
+                                <li><a class="page-scroll" href="/Home#tesis">Tesislerimiz</a></li>
+                                <li><a class="page-scroll" href="/Certificate">Sertifikalar</a></li>
+                            </ul>
+                        </li>
+
                         <li><a class="page-scroll" href="/Category">Ürünlerimiz</a></li>
-                        <li><a class="page-scroll" href="/Home#about" data-link="about">Hakkımızda</a></li>
                         <li><a class="page-scroll" href="/News">Haberler</a></li>
                         <li class="dropdown">
-                            <a class="page-scroll" href="/Forms">Formlar</a><ul class="dropdown-menu" role="menu">
+                            <a class="page-scroll" href="/Forms">Formlar</a>
+                            <ul class="dropdown-menu" role="menu">
                                 <li><a class="page-scroll" href="/Forms">Kariyer Formu</a></li>
                                 <li><a class="page-scroll" href="/Forms/RequestForm">Talep Formu</a></li>
                             </ul>
                         </li>
-                        <li><a class="page-scroll" href="/Certificate">Sertifikalar</a></li>
                         <li><a class="page-scroll" href="/Home#contact">İletişim</a></li>
                     </ul>
                 </div>
@@ -126,6 +137,7 @@
     @Scripts.Render("~/bundles/angular")
 
     <script src="~/Scripts/js/jquery-min.js"></script>
+    <script src="~/Content/assets/js/jquery.mousewheel.pack.js"></script>
     <script src="~/Content/assets/js/smoothscroll.js"></script>
     <script src="~/Content/assets/js/plugins.js"></script>
     <script src="~/Content/assets/js/master.js"></script>
@@ -163,7 +175,8 @@
     <script src="~/Scripts/js/form-validator.min.js"></script>
     <script src="~/Scripts/js/contact-form-script.js"></script>
     <script src="~/Scripts/js/main.js"></script>
-
+    <script src="~/Content/assets/fancybox/jquery.fancybox.js"></script>
+    <script src="~/Content/assets/fancybox/jquery.fancybox.pack.js"></script>
     @RenderSection("Scripts", required: false);
 
 </body>

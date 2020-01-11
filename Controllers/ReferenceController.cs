@@ -13,5 +13,10 @@ namespace BHOurProject.Controllers
         {
             return View();
         }
+
+        public ActionResult ReferenceList()
+        {
+            return View();
+        }
     }
 }
