@@ -36,7 +36,7 @@ namespace BHOurProject.Areas.Admin.Controllers
             return JsonConvert.SerializeObject(message);
         }
         [HttpPost]
-        public string DeteteCategory(int id)
+        public string DeleteCategory(int id)
         {
             bool result = false;
             Category cat = new Category();

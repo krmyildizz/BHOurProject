@@ -3251,14 +3251,14 @@ figure.snip1321 {
         opacity: 0;
     }
 
-    figure.snip1321 a {
+    /*figure.snip1321 a {
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
         position: absolute;
         z-index: 1;
-    }
+    }*/
 
     figure.snip1321:hover figcaption,
     figure.snip1321.hover figcaption {

@@ -16,12 +16,12 @@
                     <div class="row">
                         @foreach (var item in Model)
                         {
-                            <figure class="snip1321">
-                                <img src="@item.Image" alt="sq-sample26" />
-                                <figcaption>
-                                    <h4>@item.Text</h4>
-                                </figcaption><a href="#"></a>
-                            </figure>
+                            <div class="col-md-3 col-sm-4 col-xs-6" style="min-height:370px;">
+                                <a rel="example_group" class="webTemplates objects" title="Custom title" href="@item.Image">
+                                    <img src="@item.Image" alt="sq-sample26" />
+                                </a>
+                            </div>
+
                         }
                     </div>
                 </div>
@@ -29,3 +29,12 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("a[rel=example_group]").fancybox();
+        });
+    </script>
+
+}
