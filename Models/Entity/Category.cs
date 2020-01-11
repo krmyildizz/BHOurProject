@@ -23,7 +23,7 @@ namespace BHOurProject.Models.Entity
         public static List<Category> GetCategoryList()
         {
             DataContext db = new DataContext();
-            return db.Category.Where(x => x.IsActive).ToList();
+            return db.Category.ToList();
         }
         public bool UpdateCategory(Category category)
         {
