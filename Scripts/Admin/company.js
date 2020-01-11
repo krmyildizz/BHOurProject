@@ -5,7 +5,7 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
     $scope.EnableEdit = false;
     $scope.selected = {};
     $("#addToTable").hide();
-    $scope.getCategoryList = function () {
+    $scope.getCompanyList = function () {
         //$http POST function
         $http({
             method: "post",
@@ -13,9 +13,9 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCategoryList = response.data;
+            $scope.getCompanyList = response.data;
             $scope.EnableEdit = false;
-            $scope.isAddCategory = false;
+            $scope.isAddCompany = false;
 
 
         }, function errorCallback(response) {
@@ -29,20 +29,20 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
         $scope.isAddCategory = false;
 
     }
-    $scope.editCategory = function (item) {
+    $scope.editCompany = function (item) {
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
     }
     $scope.openAddPage = function () {
         $("#addToTable").show();
-        $scope.isAddCategory = true;
+        $scope.isAddCompany= true;
     }
-    $scope.addCategory = function () {
+    $scope.addCompany = function () {
 
         $http({
             method: "post",
             url: "/Admin/Company/SaveCompany",
-            data: JSON.stringify($scope.selectedValue),
+            data: JSON.stringify($scope.selected),
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
@@ -52,22 +52,23 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             console.log(response.errorCallback);
         });
     }
-    $scope.deleteCategory = function (id) {
+    $scope.deleteCompany = function (id) {
+
         $http({
             method: "post",
-            url: "/Admin/Company/DeteteCompany",
-            data: JSON.stringify(id),
+            url: "/Admin/Company/DeleteCompany",
+            data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
 
-            alert(response.data.message);
+            $scope.getCompanyList();
 
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
         });
     }
-    $scope.updateCategory = function (selected) {
+    $scope.updateCompany = function (selected) {
 
         $http({
             method: "post",
@@ -79,7 +80,7 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             alert(response.data.message);
 
         }, function errorCallback(response) {
-
+ 
             console.log(response.errorCallback);
         });
     }
@@ -87,26 +88,7 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
         $scope.getCompanyList();
     });
     //Set $scope on Edit button click
-    $scope.editUser = function (user) {
-
-        $scope.user = user;
-        $scope.submit = false;
-        $scope.update = true;
-        $scope.cancel = true;
-        $scope.userid = false;
-
-    };
-
-
-    //cancel Uodate
-    $scope.cancelUpdate = function () {
-        $scope.user = null;
-        $scope.submit = true;
-        $scope.update = false;
-        $scope.cancel = false;
-        $scope.userid = true;
-    };
-
+  
 
 
 

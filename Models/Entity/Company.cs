@@ -25,12 +25,12 @@ namespace BHOurProject.Models.Entity
         [DefaultValue(true)]
         public bool IsActive { get; set; }
 
-        public virtual ICollection<Machine> MachineList { get; set; }
+        //public virtual ICollection<Machine> MachineList { get; set; }
 
         public static List<Company> GetCompanyList()
         {  
              DataContext db = new DataContext();
-            return db.Company.Where(x=>x.IsActive).ToList();
+            return db.Company.ToList();
         }
         public bool UpdateCompany(Company company)
         {
