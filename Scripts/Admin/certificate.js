@@ -1,84 +1,80 @@
 ﻿var myAppAdmin = angular.module('myAppAdmin', ['ngRoute']);
-myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope, $http) {
+myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($scope, $http) {
 
     //Buttons Settings
-  
+
     $scope.EnableEdit = false;
     $scope.selected = {};
     $("#addToTable").hide();
-    $scope.getCategoryList = function () {
+    $scope.getCertificateList = function () {
         //$http POST function
         $http({
             method: "post",
-            url: "/Admin/Category/GetCategoryList",
+            url: "/Admin/Certificate/GetCertificateList",
             data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCategoryList = response.data;
+            $scope.getCertificateList = response.data;
             $scope.EnableEdit = false;
             $scope.isAddCategory = false;
-            
-
         }, function errorCallback(response) {
 
-                console.log(response.errorCallback);
+            console.log(response.errorCallback);
         });
     };
 
-    $scope.cancelCategory = function () {
+    $scope.cancelCertificate = function () {
         $scope.EnableEdit = false;
         $scope.isAddCategory = false;
         $("#addToTable").hide();
-        
+
     }
-    $scope.editCategory = function (item) {
+    $scope.editCertificate = function (item) {
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
     }
-    $scope.openAddPage=function(){
+    $scope.openAddPage = function () {
         $("#addToTable").show();
-        $scope.isAddCategory = true; 
+        $scope.isAddCategory = true;
     }
-    $scope.addCategory = function () {
-       
+    $scope.addCertificate = function () {
         $http({
             method: "post",
-            url: "/Admin/Category/SaveCategory",
+            url: "/Admin/Certificate/SaveCertificate",
             data: JSON.stringify($scope.selectedValue),
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
-            alert(response.data.message);
+            $scope.getCertificateList();
+        }, function errorCallback(response) {
+                $scope.getCertificateList();
+            console.log(response.errorCallback);
+        });
+    }
+    $scope.deleteCertificate = function (id) {
+        $http({
+            method: "post",
+            url: "/Admin/Certificate/DeteteCertificate",
+            data: JSON.stringify({ id: parseInt(id) }),
+            dataType: "json"
+        }).then(function successCallback(response) {
+
+            $scope.getCertificateList();
+
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
         });
     }
-    $scope.deleteCategory = function (id) {
+    $scope.updateCertificate = function () {
+
         $http({
             method: "post",
-            url: "/Admin/Category/DeteteCategory",
-            data: JSON.stringify({ id: parseInt(id)}),
+            url: "/Admin/Certificate/UpdateCertificate",
+            data: JSON.stringify($scope.selected),
             dataType: "json"
         }).then(function successCallback(response) {
-            
-            alert(response.data.message);
-
-        }, function errorCallback(response) {
-
-            console.log(response.errorCallback);
-        });
-    }
-    $scope.updateCategory = function (selected) {
-       
-        $http({
-            method: "post",
-            url: "/Admin/Category/UpdateCategory",
-            data: JSON.stringify(selected),
-            dataType: "json"
-        }).then(function successCallback(response) {
-            $scope.getCategoryList = response.data;
-            alert(response.data.message);
+            $scope.EnableEdit = false;
 
         }, function errorCallback(response) {
 
@@ -86,29 +82,9 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
         });
     }
     $(document).ready(function () {
-        $scope.getCategoryList();
+        $scope.getCertificateList();
     });
-    //Set $scope on Edit button click
-    $scope.editUser = function (user) {
-
-        $scope.user = user;
-        $scope.submit = false;
-        $scope.update = true;
-        $scope.cancel = true;
-        $scope.userid = false;
-
-    };
-
-
-    //cancel Uodate
-    $scope.cancelUpdate = function () {
-        $scope.user = null;
-        $scope.submit = true;
-        $scope.update = false;
-        $scope.cancel = false;
-        $scope.userid = true;
-    };
-
+   
 
 
 

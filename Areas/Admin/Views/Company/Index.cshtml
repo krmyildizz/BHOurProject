@@ -24,7 +24,7 @@
         </div>
     </header>
     <!-- start: page -->
-    <section class="panel">
+    <section ng-controller="CompanyController" class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
                 <a class="modal-with-form buttons btn btn-success" href="#modalForm">Ekle <i class="fa fa-plus"></i></a>
@@ -48,93 +48,123 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    <tr ng-repeat="item in getCompanyList">
+                        <td data-title="Code">{{item.Department}}</td>
+                        <td data-title="Company" class="hidden-xs hidden-sm">{{item.Phone}}</td>
+                        <td data-title="Price" class="text-right">{{item.Address}}</td>
+                        <td data-title="Change" class="text-right hidden-xs hidden-sm">{{item.City}}</td>
+                        <td data-title="Change %" class="text-right">{{item.Fax}}</td>
+                        <td data-title="Open" class="text-right">{{item.MapPath}}</td>
+                        <td data-title="High" class="text-right hidden-xs hidden-sm">{{item.DetailInformation}}</td>
+                        <td data-title="Low" class="text-right hidden-xs hidden-sm">{{item.IsActive}}</td>
+                        <td data-title="Volume" class="text-right" style="width:10%;">
+                            <a href="#" class="mb-xs mt-xs mr-xs btn btn-warning btn-sm" ng-click="editCompany(item)">Güncelle</a>
+                            <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger btn-sm" ng-click="deleteCompany(item.Id)">Sil</a>
+                      </td>
                     <tr>
-                        <td data-title="Code">AAC</td>
-                        <td data-title="Company" class="hidden-xs hidden-sm">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                        <td data-title="Price" class="text-right">$1.38</td>
-                        <td data-title="Change" class="text-right hidden-xs hidden-sm">-0.01</td>
-                        <td data-title="Change %" class="text-right">-0.36%</td>
-                        <td data-title="Open" class="text-right">$1.39</td>
-                        <td data-title="High" class="text-right hidden-xs hidden-sm">$1.39</td>
-                        <td data-title="Low" class="text-right hidden-xs hidden-sm">$1.38</td>
-                        <td data-title="Volume" class="text-center">
-                            <a href="#" class="mb-xs mt-xs mr-xs btn btn-warning btn-sm">Güncelle</a>
-                            <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger btn-sm">Sil</a>
-                        </td>
+                     
                     </tr>
                 </tbody>
             </table>
         </div>
-    </section>
-    <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
-        <section class="panel">
-            <header class="panel-heading">
-                <h2 class="panel-title">Firma Ekle</h2>
-            </header>
-            <div class="panel-body">
-                <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
-                    <div class="form-group mt-lg">
-                        <label class="col-sm-2 text-left control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" placeholder="Type your name..." required />
+        <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+            <section class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Firma Ekle</h2>
+                </header>
+                <div class="panel-body">
+                    <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Departman</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.Department" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group mt-lg">
-                        <label class="col-sm-2 text-left control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Telefon</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.Phone" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group mt-lg">
-                        <label class="col-md-2 control-label">File Upload</label>
-                        <div class="col-md-10">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input" style="width:67.5%;">
-                                        <i class="fa fa-file fileupload-exists"></i>
-                                        <span class="fileupload-preview"></span>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Adres</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.Address" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Şehir</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.City" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Fax</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.Fax" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Harita Adresi</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.MapPath" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Detay Bilgisi</label>
+                            <div class="col-sm-10">
+                                <input ng-model="selected.DetailInformation" type="text" name="name" class="form-control" placeholder="Type your name..." required />
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-lg">
+                            <label class="col-md-2 control-label">File Upload</label>
+                            <div class="col-md-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="input-append">
+                                        <div class="uneditable-input" style="width:67.5%;">
+                                            <i class="fa fa-file fileupload-exists"></i>
+                                            <span class="fileupload-preview"></span>
+                                        </div>
+                                        <span class="btn btn-default btn-file">
+                                            <span class="fileupload-exists">Change</span>
+                                            <span class="fileupload-new">Select file</span>
+                                            <input type="file" />
+                                        </span>
+                                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>
-                                    <span class="btn btn-default btn-file">
-                                        <span class="fileupload-exists">Change</span>
-                                        <span class="fileupload-new">Select file</span>
-                                        <input type="file" />
-                                    </span>
-                                    <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group mt-lg">
-                        <label class="col-sm-2 text-left control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" placeholder="Type your name..." required />
-                        </div>
-                    </div>
-                    <div class="form-group mt-lg">
-                        <label class="col-sm-2 text-left control-label">Aktif / Pasif</label>
-                        <div class="col-sm-10">
-                            <div class="switch switch-sm switch-primary">
-                                <input type="checkbox" name="switch" data-plugin-ios-switch checked="checked" />
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-2 text-left control-label">Aktif / Pasif</label>
+                            <div class="col-sm-10">
+                                <div class="switch switch-sm switch-primary">
+                                    <input ng-model="selected.IsActive" type="checkbox" name="switch" data-plugin-ios-switch checked="checked" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm">Submit</button>
-                        <button class="btn btn-default modal-dismiss">Cancel</button>
-                    </div>
+                    </form>
                 </div>
-            </footer>
-        </section>
-    </div>
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-primary modal-confirm" ng-click="addCompany(selected)">Submit</button>
+                            <button class="btn btn-default modal-dismiss">Cancel</button>
+                        </div>
+                    </div>
+                </footer>
+            </section>
+        </div>
+    </section>
+    
     <!-- end: page -->
 </section>
 
 @section Scripts {
     <script src="~/Content/Admin/assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script src="~/Scripts/Admin/company.js"></script>
 }
 
 

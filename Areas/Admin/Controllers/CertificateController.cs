@@ -8,50 +8,50 @@ using System.Web.Mvc;
 
 namespace BHOurProject.Areas.Admin.Controllers
 {
-    public class CompanyController : Controller
+    public class CertificateController : Controller
     {
-        // GET: Admin/Company
+        // GET: Admin/Certificate
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public string GetCompanyList()
+        public string GetCertificateList()
         {
-            List<Company> list = Company.GetCompanyList();
+            List<Certificate> list = Certificate.GetCertificateList();
             return JsonConvert.SerializeObject(list);
         }
         [HttpPost]
-        public string UpdateCompany(Company company)
+        public string UpdateCertificate(Certificate certificate)
         {
             bool result = false;
-            Company cat = new Company();
+            Certificate cat = new Certificate();
             {
-               
-                result = cat.UpdateCompany(company);
+
+                result = cat.UpdateCertificate(certificate);
             }
             string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
             return JsonConvert.SerializeObject(message);
         }
         [HttpPost]
-        public string DeleteCompany(int id)
+        public string DeleteCertificate(int id)
         {
             bool result = false;
-            Company cat = new Company();
+            Certificate cat = new Certificate();
             {
-                result = cat.DeleteCompany(id);
+                result = cat.DeleteCertificate(id);
             }
             string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
             return JsonConvert.SerializeObject(message);
         }
 
         [HttpPost]
-        public string SaveCompany(Company company)
+        public string SaveCertificate(Certificate company)
         {
             bool result = false;
-            Company cat = new Company();
+            Certificate cat = new Certificate();
             {
-                result = cat.AddCompany(company);
+                result = cat.AddCertificate(company);
             }
             string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";
             return JsonConvert.SerializeObject(message);
