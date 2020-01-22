@@ -139,10 +139,12 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CertificateController.cs" />
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Models\ImageUpload.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CertificateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -161,6 +163,10 @@
     <Compile Include="Migrations\201912291238044_Contact.designer.cs">
       <DependentUpon>201912291238044_Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001222050164_Customers.cs" />
+    <Compile Include="Migrations\202001222050164_Customers.designer.cs">
+      <DependentUpon>202001222050164_Customers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\DbContext.cs" />
     <Compile Include="Models\Entity\CarrierForm.cs" />
@@ -169,6 +175,7 @@
     <Compile Include="Models\Entity\ColorPicker.cs" />
     <Compile Include="Models\Entity\Company.cs" />
     <Compile Include="Models\Entity\Contact.cs" />
+    <Compile Include="Models\Entity\Customer.cs" />
     <Compile Include="Models\Entity\Machine.cs" />
     <Compile Include="Models\Entity\News.cs" />
     <Compile Include="Models\Entity\Product.cs" />
@@ -1842,10 +1849,13 @@
     <Content Include="Content\revolution\js\revolution.extension.slideanims.min.js" />
     <Content Include="Content\revolution\js\revolution.extension.video.min.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Files\post-06.jpg" />
     <Content Include="Files\Templates\RequestMailTemplate.html" />
     <Content Include="Scripts\Admin\category.js" />
     <Content Include="Scripts\Admin\certificate.js" />
     <Content Include="Scripts\Admin\company.js" />
+    <Content Include="Scripts\Admin\product.js" />
+    <Content Include="Scripts\Admin\referance.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -2136,11 +2146,8 @@
     <Content Include="Areas\Admin\Views\Login\Logout.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Company\Index.cshtml" />
-
     <Content Include="Areas\Admin\Views\Certificate\Index.cshtml" />
-
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
@@ -2287,7 +2294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2306,6 +2313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912291238044_Contact.resx">
       <DependentUpon>201912291238044_Contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001222050164_Customers.resx">
+      <DependentUpon>202001222050164_Customers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

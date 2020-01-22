@@ -41,6 +41,7 @@ namespace BHOurProject
    .Include(
        "~/Scripts/angular.js",
         "~/Scripts/Admin/category.js",
+        "~/Scripts/Admin/referance.js",
        "~/Scripts/angular.min.js",
        "~/Scripts/ui-bootstrap-modal.js",
        "~/Scripts/angular-animate.js",

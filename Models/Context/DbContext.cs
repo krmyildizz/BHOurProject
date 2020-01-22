@@ -31,6 +31,7 @@ namespace BHOurProject.Models.Context
         public DbSet<RequestForm> RequestForm { get; set; }
         public DbSet<ColorPicker> ColorPicker { get; set; }
         public DbSet<SubCategory> SubCategory { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
     }
 }
