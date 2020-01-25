@@ -29,13 +29,13 @@
     <section class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
-                <a class="modal-with-form buttons btn btn-success" href="#modalForm">Ekle <i class="fa fa-plus"></i></a>
+                <a class="buttons btn btn-success"  ng-click="showAddProducts()">Ekle <i class="fa fa-plus"></i></a>
             </div>
 
             <h2 class="panel-title">Ürünler</h2>
         </header>
-        <div ng-show="!EnableEdit" class="panel-body">
-            <table class="table table-no-more table-bordered table-striped mb-none">
+        <div class="panel-body">
+            <table  ng-show="!showAddProduct" class="table table-no-more table-bordered table-striped mb-none">
                 <thead>
                     <tr>
                         <th>İsim</th>
@@ -70,7 +70,7 @@
             </table>
         </div>
     </section>
-    <section class="panel hidden" id="ProductAdd">
+    <section class="panel"  id="ProductAdd" ng-show="showAddProduct">
         <header class="panel-heading">
             <h2 class="panel-title">Ürün Ekle</h2>
         </header>

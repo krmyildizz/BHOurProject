@@ -1,6 +1,7 @@
 ﻿var myAppAdmin = angular.module('myAppAdmin', ['ngRoute']);
 myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope, $http) {
-    $scope.EnableEdit  = false;
+    $scope.EnableEdit = false;
+    $scope.showAddProduct = false;
     $scope.showAdd = function () {
         $scope.ShowReferance = true;
     }
@@ -20,6 +21,9 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         }
         reader.readAsDataURL(element.files[0]);
 
+    }
+    $scope.showAddProducts= function () {
+        $scope.showAddProduct = true;
     }
     $scope.getCustomerList = function () {
         $http({
