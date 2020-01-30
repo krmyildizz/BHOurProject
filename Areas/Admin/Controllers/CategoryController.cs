@@ -22,6 +22,12 @@ namespace BHOurProject.Areas.Admin.Controllers
             return JsonConvert.SerializeObject(list);
         }
         [HttpPost]
+        public string GetSubCategory()
+        {
+            List<CategoryDTO> list = Category.GetSubCategory();
+            return JsonConvert.SerializeObject(list);
+        }
+        [HttpPost]
         public string UpdateCategory(Category category)
         {
             bool result = false;

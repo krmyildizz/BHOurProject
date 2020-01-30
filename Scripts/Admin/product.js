@@ -8,9 +8,14 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
     $scope.editProduct = function (item) {
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
+        $("#aplicationArea").summernote("code", "your text");
+
     }
     $scope.showCancel = function () {
         $scope.EnableEdit  = false;
+    }
+    $scope.showAddProducts = function () {
+        $scope.showAddProduct = true;
     }
     $scope.setFile = function (element) {
         $scope.currentFile = element.files[0];
@@ -22,25 +27,18 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         reader.readAsDataURL(element.files[0]);
 
     }
-    $scope.showAddProducts= function () {
-        $scope.showAddProduct = true;
-    }
-    $scope.getCustomerList = function () {
-        $http({
-            method: "post",
-            url: "/Admin/Customer/GetCustomerList",
-            data: JSON.stringify({}),
-            dataType: "json"
-        }).then(function successCallback(response) {
-            $scope.customerList = response.data;
-
-        }, function errorCallback(response) {
-
-            console.log(response.errorCallback);
-        });
-
+    $scope.setFilePdf = function (element) {
+        $scope.currentFile = element.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            $scope.Pdf = event.target.result;
+            $scope.$apply()
+        }
+        reader.readAsDataURL(element.files[0]);
 
     }
+   
+   
 
     $scope.getProductList = function () {
         $http({
@@ -56,7 +54,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             console.log(response.errorCallback);
         });
     }
-    $scope.saveReferance = function () {
+    $scope.saveProduct = function () {
         $http({
             method: "post",
             url: "/Admin/Product/SaveProduct",
@@ -73,10 +71,25 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         $http({
             method: "post",
             url: "/Admin/Product/UpdateCategory",
-            data: JSON.stringify(selected),
+            data: JSON.stringify({ product: $scope.selected, subCategory: $scope.selected.subCategory, image: $scope.ImageSourceIcon, pdf: $scope.Pdf}),
             dataType: "json"
         }).then(function successCallback(response) {
             
+        }, function errorCallback(response) {
+
+            console.log(response.errorCallback);
+        });
+    }
+    $scope.getSubCategory = function () {
+        $http({
+            method: "post",
+            url: "/Admin/Category/GetSubCategory",
+            data: JSON.stringify({}),
+            dataType: "json"
+        }).then(function successCallback(response) {
+
+            $scope.subCategory = response.data;
+
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -99,6 +112,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
     }
     $(document).ready(function () {
         $scope.getProductList();
+        $scope.getSubCategory();
         //$scope.getCustomerList();
     });
 }]);

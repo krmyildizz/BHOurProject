@@ -9,7 +9,17 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace BHOurProject.Models.Entity
-{
+{  
+    public class CategoryDTO
+    {
+        public int SubCategoryId { get; set; }
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
+        public string SubName { get; set; }
+        [DefaultValue(true)]
+        public bool IsActive { get; set; }
+        public string Image { get; set; }
+    }
     public class Category
     {
         [Key]
@@ -24,6 +34,20 @@ namespace BHOurProject.Models.Entity
         {
             DataContext db = new DataContext();
             return db.Category.ToList();
+        }
+        public static List<CategoryDTO> GetSubCategory()
+        {
+            DataContext db = new DataContext();
+            var subCategory = (from ep in db.SubCategory
+                               join e in db.Category on ep.CategoryId equals e.Id
+                               select new CategoryDTO
+                               {
+                                   CategoryId = ep.CategoryId,
+                                   SubName = ep.Name,
+                                   Name = e.Name,
+                                   SubCategoryId = ep.Id
+                               }).ToList(); 
+            return subCategory;
         }
         public bool UpdateCategory(Category category)
         {

@@ -2112,7 +2112,6 @@
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\CHANGELOG.md" />
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\CONTRIBUTING.md" />
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\idle-timer.jquery.json" />
-    <Content Include="Content\Admin\assets\vendor\jquery-idletimer\jquery-idletimer.v12.suo" />
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\LICENSE-MIT" />
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\package.json" />
     <Content Include="Content\Admin\assets\vendor\jquery-idletimer\README.md" />
@@ -2152,6 +2151,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

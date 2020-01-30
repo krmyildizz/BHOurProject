@@ -1,8 +1,11 @@
-﻿using BHOurProject.Models.Entity;
+﻿using BHOurProject.Areas.Admin.Models;
+using BHOurProject.Models.Entity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -32,14 +35,80 @@ namespace BHOurProject.Areas.Admin.Controllers
             return JsonConvert.SerializeObject(message);
         }
         [HttpPost]
-        public string UpdateCategory(Product product)
+        public string UpdateCategory(Product product, CategoryDTO subCategory,string image,string pdf)
         {
+            string ftpFolder = "/Files/Image";
+            string imageType = ImageUpload.GetFileType(image);
+            string FileIconeName = Guid.NewGuid().ToString();
+            string imagepdf = ImageUpload.GetFileType(pdf);
+
+            byte[] fileBytes = ImageUpload.Parse(image);
+            byte[] pdfByte= ImageUpload.Parse(pdf);
+            string Fullftp = "ftp://demoproje.site/httpdocs/File/Image/" + FileIconeName + "." + imageType;
+            string FullPdf = "ftp://demoproje.site/httpdocs/File/Image/" + imagepdf + "." + imagepdf;
+            if (image != null)
+            {
+                FtpWebRequest reqFtp =
+                               (FtpWebRequest)
+                                   FtpWebRequest.Create(Fullftp);
+
+
+                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu38B6");
+                reqFtp.KeepAlive = false;
+                reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
+                reqFtp.UseBinary = true;
+                reqFtp.UsePassive = true;
+
+                try
+                {
+                    using (Stream strm = reqFtp.GetRequestStream())
+                    {
+                        strm.Write(fileBytes, 0, fileBytes.Length);
+                        strm.Close();
+
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            if (pdf!=null)
+            {
+                FtpWebRequest reqFtp =
+                              (FtpWebRequest)
+                                  FtpWebRequest.Create(FullPdf);
+                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu38B6");
+                reqFtp.KeepAlive = false;
+                reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
+                reqFtp.UseBinary = true;
+                reqFtp.UsePassive = true;
+
+                try
+                {
+                    using (Stream strm = reqFtp.GetRequestStream())
+                    {
+                        strm.Write(pdfByte, 0, pdfByte.Length);
+                        strm.Close();
+
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
             bool result = false;
             Product pro = new Product();
             {
                 pro.Id = product.Id;
                 pro.Name = product.Name;
-                pro.CategoryId = product.CategoryId;
+                pro.CategoryId = subCategory.SubCategoryId;
                 pro.Description = product.Description;
                 pro.Description2 = product.Description2;
                 pro.AplicationAreas = product.AplicationAreas;

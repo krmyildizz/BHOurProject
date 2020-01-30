@@ -68,12 +68,12 @@
                 <!--== End Atribute Navigation ==-->
                 <!--== Start Header Navigation ==-->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="tr-icon ion-android-menu"></i> </button>
+                    <button type="button" class="navbar-toggle" id="navbarBtn"> <i class="tr-icon ion-android-menu"></i> </button>
                     <div class="logo"> <a href="/Home"> <img class="logo logo-display" src="~/Content/assets/images/logo.png" alt=""> <img class="logo logo-scrolled" src="~/Content/assets/images/logo.png" alt=""> </a> </div>
                 </div>
                 <!--== End Header Navigation ==-->
                 <!--== Collect the nav links, forms, and other content for toggling ==-->
-                <div class="collapse navbar-collapse" id="navbar-menu">
+                <div class="navbar-collapse collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
                         <li><a class="page-scroll" href="/Home">Ana Sayfa</a></li>
                         <li>
@@ -178,6 +178,25 @@
     <script src="~/Content/assets/fancybox/jquery.fancybox.js"></script>
     <script src="~/Content/assets/fancybox/jquery.fancybox.pack.js"></script>
     @RenderSection("Scripts", required: false);
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#navbarBtn").click(function () {
+                    if ($("#navbar-menu").hasClass("collapse")) {
+                        $("#navbar-menu").removeClass("collapse");
+                    }
+                    else {
+                        $("#navbar-menu").addClass("collapse");
+                    }
+                    $("#navbar-menu").toggleClass("collapse-in show");
+                });
+                if ($(window).width() <= 992) {
+                    $(".dropdown").click(function () {
+                        $(this).children(".dropdown-menu").toggleClass("show");  
+                    });
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>

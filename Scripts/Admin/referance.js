@@ -17,6 +17,17 @@ myAppAdmin.controller('ReferanceController', ['$scope', '$http', function ($scop
         reader.readAsDataURL(element.files[0]);
 
     }
+    $scope.test = function (item) {
+        $scope.selected = angular.copy(item);
+        $scope.text = $scope.checkModel;
+    }
+    $('#file_12').on("change", function () {
+        alert("booyah");
+    });
+
+    $('#file_1').click(function () {
+        alert($scope.selected.Id);
+        })
     $scope.getCustomerList = function () {
         $http({
             method: "post",
@@ -54,7 +65,7 @@ myAppAdmin.controller('ReferanceController', ['$scope', '$http', function ($scop
         $http({
             method: "post",
             url: "/Admin/Slider/Addreferance",
-            data: JSON.stringify({ image: $scope.ImageSourceIcon, check: $scope.check, checkBanner: $scope.checkBanner, customerName: $scope.customerName }),
+            data: JSON.stringify({ image: $scope.ImageSourceIcon, check: $scope.check, checkBanner: $scope.checkBanner, customerName: $scope.selected.customerName }),
             dataType: "json"
         }).then(function successCallback(response) {
         }, function errorCallback(response) {

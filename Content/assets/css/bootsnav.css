@@ -1384,6 +1384,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked {
         -webkit-border-radius: 0px 0px 0px;
         -o-border-radius: 0px 0px 0px;
         border-radius: 0px 0px 0px;
+        text-align: center;
     }
 
         nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {

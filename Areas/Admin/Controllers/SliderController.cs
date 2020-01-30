@@ -33,14 +33,14 @@ namespace BHOurProject.Areas.Admin.Controllers
             string FileIconeName = Guid.NewGuid().ToString();
 
             byte[] fileBytes = ImageUpload.Parse(image);
-            string Fullftp = "ftp://demoproje.site/httpdocs/File/Image/" + FileIconeName + "." + imageType;
+            string Fullftp = "ftp://demoproje.site/File/Image/" + FileIconeName + "." + imageType;
 
             FtpWebRequest reqFtp =
                 (FtpWebRequest)
                     FtpWebRequest.Create(Fullftp);
 
 
-            reqFtp.Credentials = new NetworkCredential("u9172314", "OImu38B6");
+            reqFtp.Credentials = new NetworkCredential("u9172314", "OImu28B6");
             reqFtp.KeepAlive = false;
             reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
             reqFtp.UseBinary = true;

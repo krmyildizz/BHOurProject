@@ -13,7 +13,7 @@ jQuery(function ($) {
                 $(this).removeClass("hover");
             }
         );
-
+        
         var accordionsMenu = $('.accordion-collection');
 
         if (accordionsMenu.length > 0) {
