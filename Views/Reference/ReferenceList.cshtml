@@ -75,22 +75,21 @@
             <div class="col-lg-12">
                 <div class="portfolioFilter clearfix">
                     <a href="#" data-filter="*" class="current">Tümü</a>
-                    <a href="#" data-filter=".webTemplates">Web Templates</a>
-                    <a href="#" data-filter=".logos">Logos</a>
-                    <a href="#" data-filter=".drawings">Drawings</a>
-                    <a href="#" data-filter=".a">a</a>
+                    @foreach (var item in ViewBag.customer)
+                    {
+                        <a href="#" data-filter=".@item.Name" class="current">@item.Name</a>
+                    }
                 </div>
             </div>
             <div class="portfolioContainer">
 
-
-                <a rel="example_group" class="webTemplates objects" title="Custom title" href="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_b.jpg">
-                    <img alt="" src="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_m.jpg" />
-                </a>
-
-                <a rel="example_group" class="a" title="Custom title" href="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_b.jpg">
-                    <img alt="" src="http://farm4.staticflickr.com/3745/8971419780_cb88b22947_m.jpg" />
-                </a>
+                @foreach (var refs in ViewBag.referance)
+                {
+                    <a rel="example_group" class="@refs.CustomerName objects" title="@refs.CustomerName" href="@refs.Image">
+                        <img alt="" src="@refs.Image" />
+                    </a>
+                }
+            
 
 
             </div>

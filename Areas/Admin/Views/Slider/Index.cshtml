@@ -4,7 +4,12 @@
 }
 
 
+
 @section Styles {
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/dropzone/css/basic.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/dropzone/css/dropzone.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/summernote/summernote.css" />
+    <link rel="stylesheet" href="~/Content/Admin/assets/vendor/summernote/summernote-bs3.css" />
     <link rel="stylesheet" href="~/Content/Admin/assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
 }
 
@@ -38,10 +43,10 @@
                         <a href="#" id="mgSelectAll"><i class="fa fa-check-square"></i> <span data-all-text="Tümünü Seç" data-none-text="Vazgeç">Tümünü Seç</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-pencil"></i> Güncelle</a>
+                        <a href="#" ng-click="editReferance()"><i class="fa fa-pencil"></i> Güncelle</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-trash-o"></i> Sil</a>
+                        <a href="#" ng-click="deleteReferance()"><i class="fa fa-trash-o"></i> Sil</a>
                     </li>
                     <li class="right" style="padding:10px;">
                         <div class="form-group" style="min-width:300px;">
@@ -57,19 +62,19 @@
                 </ul>
 
             </div>
-            <div ng-show="!ShowReferance" class="row mg-files" data-sort-destination data-sort-id="media-gallery">
+            <div ng-show="!ShowReferance &&!EditReferance" class="row mg-files" data-sort-destination data-sort-id="media-gallery">
                 <!-- Foreach Dönülecek Alan -->
                 <div ng-model="selected" ng-repeat="item in referanceList" class="isotope-item document col-sm-6 col-md-4 col-lg-3">
                     <div class="thumbnail">
                         <div class="thumb-preview">
                             <a class="thumb-image" href="~/Content/Admin/assets/images/projects/project-1.jpg">
-                                <img  src="{{item.Image}}" class="img-responsive" alt="Project">
+                                <img src="{{item.Image}}" class="img-responsive" alt="Project">
                             </a>
                             <div class="mg-thumb-options">
                                 <div class="mg-zoom"><i class="fa fa-search"></i></div>
                                 <div class="mg-toolbar">
                                     <div class="mg-option checkbox-custom checkbox-inline">
-                                        <input type="checkbox" ng-model="selected.checkModel"  ng-click="test(item)" id="file_12" value="1">
+                                        <input type="checkbox" ng-model="selected.checkModel" ng-click="selectedId(item)" id="file_{{item.Id}}" value="1">
                                         <label for="file_12">SELECT</label>
                                     </div>
                                     <div class="mg-group pull-right">
@@ -93,16 +98,73 @@
                 </div>
                 <!-- Foreach Dönülecek Alan -->
             </div>
-            <section ng-show="ShowReferance" class="panel">
+            <section ng-show="ShowReferance &&EditReferance==false" class="panel">
                 <header class="panel-heading">
                     <h2 class="panel-title">Slider Ekle</h2>
                 </header>
                 <div class="panel-body">
                     <div class="form-group">
+                        <label class="col-md-2 control-label" for="inputDefault">Müşteri Adı</label>
+                        <div class="col-md-10">
+                            <select ng-model="selected.customerName" class="form-control input-sm mb-md" style="margin-bottom:0 !important;">
+                                <option ng-repeat="customer in customerList">{{customer.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Görsel Ekle</label>
+                        <div class="col-md-8">
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fa fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Değiştir</span>
+                                        <span class="fileupload-new">Dosya Yükle</span>
+                                        <input type="file" base-sixty-four-input onchange="angular.element(this).scope().setFile(this)" />
+                                    </span>
+                                    <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Sil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Aktif / Pasif</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox-custom checkbox-primary">
+                                <input type="checkbox" ng-model="check" id="checkboxExample1">
+                                <label for="checkboxExample2"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Manşet Alanı</label>
+
+                        <div class="col-sm-10">
+                            <div class="checkbox-custom checkbox-primary">
+                                <input type="checkbox" ng-model="checkBanner" id="checkboxExample2">
+                                <label for="checkboxExample2"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger" id="txtUploadFile" ng-click="saveReferance()">EKLE</button>
+                    <button class="btn btn-danger" id="txtUploadFiles" ng-click="showCancel()">Geri</button>
+                </div>
+            </section>
+            <section ng-show="EditReferance" class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Slider Güncelle</h2>
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
                         <label class="col-md-2 control-label" for="inputDefault">Başlık</label>
                         <div class="col-md-10">
-                            <select ng-model="selected.customerName"   class="form-control input-sm mb-md" style="margin-bottom:0 !important;">
-                                <option   ng-repeat="customer in customerList"  >{{customer.Name}}</option>
+                            <select ng-model="selected.customerName" class="form-control input-sm mb-md" style="margin-bottom:0 !important;">
+                                <option ng-repeat="customer in customerList" ng-selected="selectedValue.CustomerName">{{customer.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -128,8 +190,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">Aktif / Pasif</label>
                         <div class="col-md-10">
-                            <div class="switch switch-sm switch-primary">
-                                <input type="checkbox" ng-model="check" id="checkActive" name="switch" data-plugin-ios-switch checked="checked" />
+                            <div class="checkbox-custom checkbox-text-danger">
+                                <input type="checkbox" ng-model="selectedValue.IsActive" id="checkActive" name="switch" data-plugin-ios-switch checked="checked" />
                             </div>
                         </div>
 
@@ -139,65 +201,12 @@
 
                         <div class="col-sm-10">
                             <div class="checkbox-custom checkbox-primary">
-                                <input type="checkbox" ng-model="checkBanner" id="checkboxExample2">
+                                <input type="checkbox" ng-model="selectedValue.IsBanner" id="checkboxExample2">
                                 <label for="checkboxExample2"></label>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-danger" id="txtUploadFile" ng-click="saveReferance()">EKLE</button>
-                    <button class="btn btn-danger" id="txtUploadFile" ng-click="showCancel()">Geri</button>
-                </div>
-            </section>
-            <section ng-show="EditReferance" class="panel">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Slider Ekle</h2>
-                </header>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="inputDefault">Başlık</label>
-                        <div class="col-md-10">
-                            <input type="text" ng-model="Selected.customerName" class="form-control" id="inputDefault">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Görsel Ekle</label>
-                        <div class="col-md-8">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input">
-                                        <i class="fa fa-file fileupload-exists"></i>
-                                        <span class="fileupload-preview"></span>
-                                    </div>
-                                    <span class="btn btn-default btn-file">
-                                        <span class="fileupload-exists">Değiştir</span>
-                                        <span class="fileupload-new">Dosya Yükle</span>
-                                        <input type="file" base-sixty-four-input onchange="angular.element(this).scope().setFile(this)" />
-                                    </span>
-                                    <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Sil</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Aktif / Pasif</label>
-                        <div class="col-md-10">
-                            <div class="switch switch-sm switch-primary">
-                                <input type="checkbox" ng-model="selected.IsActive" id="checkActive" name="switch" data-plugin-ios-switch checked="checked" />
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Manşet Alanı</label>
-
-                        <div class="col-sm-10">
-                            <div class="checkbox-custom checkbox-primary">
-                                <input type="checkbox" ng-model="selected.IsBanner" id="checkboxExample2">
-                                <label for="checkboxExample2"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-danger" id="txtUploadFile" ng-click="updateReferance()">EKLE</button>
+                    <button class="btn btn-danger" id="txtUploadFile" ng-click="updateReferance()">Güncelle</button>
                     <button class="btn btn-danger" id="txtUploadFile" ng-click="showCancel()">Geri</button>
                 </div>
             </section>
@@ -211,4 +220,5 @@
     <script src="~/Content/Admin/assets/javascripts/pages/examples.mediagallery.js"></script>
     <script src="~/Content/Admin/assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
     <script src="~/Scripts/Admin/referance.js"></script>
+
 }

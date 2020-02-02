@@ -1,20 +1,20 @@
 ﻿var myAppAdmin = angular.module('myAppAdmin', ['ngRoute']);
-myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($scope, $http) {
+myAppAdmin.controller('CustomerController', ['$scope', '$http', function ($scope, $http) {
 
     //Buttons Settings
 
     $scope.EnableEdit = false;
     $scope.selected = {};
     $("#addToTable").hide();
-    $scope.getCertificateList = function () {
+    $scope.getCustomerList = function () {
         //$http POST function
         $http({
             method: "post",
-            url: "/Admin/Certificate/GetCertificateList",
+            url: "/Admin/Customer/GetCustomerList",
             data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCertificateList = response.data;
+            $scope.getCustomersList = response.data;
             $scope.EnableEdit = false;
             $scope.isAddCategory = false;
         }, function errorCallback(response) {
@@ -23,14 +23,14 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
         });
     };
 
-    $scope.cancelCertificate = function () {
+    $scope.cancelCustomer= function () {
         $scope.EnableEdit = false;
         $scope.isAddCategory = false;
         $("#addToTable").hide();
         location.reload();
 
     }
-    $scope.editCertificate = function (item) {
+    $scope.editCustomer = function (item) {
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
     }
@@ -38,54 +38,54 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
         $("#addToTable").show();
         $scope.isAddCategory = true;
     }
-    $scope.addCertificate = function () {
+    $scope.addCustomer = function () {
         $http({
             method: "post",
-            url: "/Admin/Certificate/SaveCertificate",
+            url: "/Admin/Customer/SaveCustomer",
             data: JSON.stringify($scope.selectedValue),
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
-            $scope.getCertificateList();
+            $scope.getCustomerList();
         }, function errorCallback(response) {
-                $scope.getCertificateList();
+            $scope.getCertificateList();
             console.log(response.errorCallback);
         });
     }
-    $scope.deleteCertificate = function (id) {
+    $scope.deleteCustomer = function (id) {
         $http({
             method: "post",
-            url: "/Admin/Certificate/DeteteCertificate",
+            url: "/Admin/Customer/DeteteCustomer",
             data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
 
-            $scope.getCertificateList();
+            $scope.getCustomerList();
 
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
         });
     }
-    $scope.updateCertificate = function () {
+    $scope.updateCustomer = function () {
 
         $http({
             method: "post",
-            url: "/Admin/Certificate/UpdateCertificate",
+            url: "/Admin/Customer/UpdateCustomer",
             data: JSON.stringify($scope.selected),
             dataType: "json"
         }).then(function successCallback(response) {
             $scope.EnableEdit = false;
-
+            $scope.getCustomerList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
         });
     }
     $(document).ready(function () {
-        $scope.getCertificateList();
+        $scope.getCustomerList();
     });
-   
+
 
 
 

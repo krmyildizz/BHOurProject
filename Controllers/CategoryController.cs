@@ -14,7 +14,7 @@ namespace BHOurProject.Controllers
         // GET: Category
         public ActionResult Index(int? Id)
         {
-            var subCategory = db.Product.Where(i => i.IsActive).ToList().Select(i => new SubCategory
+            var subCategory = db.SubCategory.Where(i => i.IsActive==true).ToList().Select(i => new SubCategory
             {
                 Id = i.Id,
                 Name = i.Name,

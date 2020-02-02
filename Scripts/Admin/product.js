@@ -5,14 +5,23 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
     $scope.showAdd = function () {
         $scope.ShowReferance = true;
     }
+    
     $scope.editProduct = function (item) {
+        $scope.options = {
+            "value":""+ item.Description2+""
+        }
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
+       
         $("#aplicationArea").summernote("code", "your text");
 
     }
+  
+    
     $scope.showCancel = function () {
-        $scope.EnableEdit  = false;
+        $scope.EnableEdit = false;
+        $scope.showAddProduct = false;
+        location.reload();
     }
     $scope.showAddProducts = function () {
         $scope.showAddProduct = true;
@@ -55,10 +64,11 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         });
     }
     $scope.saveProduct = function () {
+        $scope.selected.IsActive = $("#isActiveAdd").is(":checked");
         $http({
             method: "post",
             url: "/Admin/Product/SaveProduct",
-            data: JSON.stringify({ image: $scope.ImageSourceIcon, check: $scope.check, checkBanner: $scope.checkBanner, customerName: $scope.customerName }),
+            data: JSON.stringify({ product: $scope.selected, image: $scope.ImageSourceIcon, pdf: $scope.Pdf,subCategory: $scope.selected.subCategory }),
             dataType: "json"
         }).then(function successCallback(response) {
         }, function errorCallback(response) {
@@ -66,8 +76,8 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             console.log(response.errorCallback);
         });
     }
-    $scope.updateProduct= function (selected) {
-
+    $scope.updateProduct= function () {
+        $scope.selected.IsActive = $("#isActiveEdit").is(":checked");
         $http({
             method: "post",
             url: "/Admin/Product/UpdateCategory",
@@ -102,9 +112,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
-
-            alert(response.data.message);
-
+            $scope.getProductList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -113,6 +121,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
     $(document).ready(function () {
         $scope.getProductList();
         $scope.getSubCategory();
+
         //$scope.getCustomerList();
     });
 }]);

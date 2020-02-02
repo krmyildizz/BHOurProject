@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<header class="page-header">
+    <h2>Müşteriler</h2>
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Ana Sayfa</span></li>
+            <li><span>Müşteriler</span></li>
+        </ol>
+    </div>
+</header>
+
+<!-- start: page -->
+<section class="panel" ng-controller="CustomerController">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <button id="addToTables" ng-click="openAddPage()" class="btn btn-success" style="margin-right:5px;">Ekle <i class="fa fa-plus"></i></button>
+        </div>
+        <h2 class="panel-title">Müşteriler</h2>
+    </header>
+    <div class="panel-body">
+        <div id="datatable-editable_wrapper" class="dataTables_wrapper no-footer">
+
+            <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable" role="grid" aria-describedby="datatable-editable_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 121px;">İşlemler</th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 247px;">İsim</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 323px;">İl</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 323px;">İlçe</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 323px;">Telefon</th>
+                        <th class="sorting text-center" style="width:10%;" tabindex="0" aria-controls="datatable-editable" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Aktif</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-show="EnableEdit==false && isAddCategory==false" class="gradeA even" role="row" ng-repeat="item in getCustomersList">
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="mb-xs mt-xs mr-xs btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">İşlemler <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>  <a href="#" ng-click="editCustomer(item)" class="on-default edit-row"><i class="fa fa-pencil"></i><span>Güncelle</span></a></li>
+                                    <li><a href="#" ng-click="deleteCustomer(item.Id)" class="on-default remove-row"><i class="fa fa-trash-o"></i><span>Sil</span></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="sorting_1" ng-model="selected.Name">{{item.Name}}</td>
+                        <td ng-model="selected.City">{{item.City}}</td>
+                        <td ng-model="selected.Town">{{item.Town}}</td>
+                        <td ng-model="selected.Phone">{{item.Phone}}</td>
+                        <td class="text-center" ng-model="selected.IsActive">{{item.IsActive}}</td>
+
+                    </tr>
+                    <tr ng-show="EnableEdit==true">
+                        <td>
+                            <a href="#" ng-click="updateCustomer(selected)" class="btn btn-success btn-sm">Güncelle</a>
+                            <a href="#" ng-click="cancelCustomer()" class="btn btn-danger btn-sm">Geri</a>
+                        </td>
+
+
+                        <td class="text-center"><input type="text" ng-model="selected.Name" class="form-control" /></td>
+                        <td><input type="text" ng-model="selected.City" class="form-control" /></td>
+                        <td><input type="text" ng-model="selected.Town" class="form-control" /></td>
+                        <td><input type="text" ng-model="selected.Phone" class="form-control" /></td>
+                        <td style="width:5%;"><input type="checkbox" ng-model="selected.IsActive" data-style="ios" /> </td>
+                    </tr>
+                    <tr id="addToTable">
+                        <td>
+                            <a href="#" ng-click="addCustomer()" class="btn btn-success btn-sm">Ekle</a>
+                            <a href="#" ng-click="cancelCustomer()" class="btn btn-danger btn-sm">Geri</a>
+                        </td>
+
+                        <td class="text-center"><input type="text" ng-model="selectedValue.Name" class="form-control" /></td>
+                        <td><input type="text" ng-model="selectedValue.City" class="form-control" /></td>
+                        <td><input type="text" ng-model="selectedValue.Town" class="form-control" /></td>
+                        <td><input type="text" ng-model="selectedValue.Phone" class="form-control" /></td>
+                        <td style="width:5%;"><input type="checkbox" ng-model="selectedValue.IsActive" data-style="ios" /> </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div><div class="row datatables-footer">
+            <div class="col-md-12">
+                <div class="dataTables_paginate paging_bs_normal" id="datatable-editable_paginate">
+                    <ul class="pagination">
+                        <li class="prev disabled"><a href="#"><span class="fa fa-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="next"><a href="#"><span class="fa fa-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+</section>
+<!-- end: page -->
+@section scripts {
+    <script src="~/Scripts/Admin/customer.js"></script>
+
+}

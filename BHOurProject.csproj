@@ -1854,6 +1854,7 @@
     <Content Include="Scripts\Admin\category.js" />
     <Content Include="Scripts\Admin\certificate.js" />
     <Content Include="Scripts\Admin\company.js" />
+    <Content Include="Scripts\Admin\customer.js" />
     <Content Include="Scripts\Admin\product.js" />
     <Content Include="Scripts\Admin\referance.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -2147,6 +2148,7 @@
     <Content Include="Areas\Admin\Views\Company\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
@@ -2294,7 +2296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

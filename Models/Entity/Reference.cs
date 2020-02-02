@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -37,6 +38,30 @@ namespace BHOurProject.Models.Entity
 
             return result;
 
+        }
+        public bool UpdateReferance(Reference refs)
+        {
+            var result = false;
+            DataContext db = new DataContext();
+            var deneme = db.Entry(refs).State = EntityState.Modified;
+            db.SaveChanges();
+            return result;
+
+        }
+        public bool DeleteReference(int id)
+        {
+            bool result;
+            DataContext db = new DataContext();
+            Reference reference = db.Reference.Find(id);
+            if (reference != null)
+            {
+                db.Reference.Remove(reference);
+                db.SaveChanges();
+                result = true;
+            }
+            else
+                result = false;
+            return result;
         }
     }
 }

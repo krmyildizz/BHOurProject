@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BHOurProject.Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,8 +15,17 @@ namespace BHOurProject.Controllers
             return View();
         }
 
-        public ActionResult ReferenceList()
+        public ActionResult ReferenceList(string customerName)
         {
+            if (string.IsNullOrEmpty(customerName)) {
+                ViewBag.customer = Customer.GetCustomerList().Where(x => x.IsActive == true);
+                ViewBag.referance = Reference.GetReference().Where(x=>x.IsActive==true);
+            }
+           
+           else{
+                ViewBag.customer = Customer.GetCustomerList().Where(x => x.Name == customerName);
+                ViewBag.referance = Reference.GetReference().Where(x => x.CustomerName == customerName);
+            }
             return View();
         }
     }

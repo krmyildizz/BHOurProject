@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BHOurProject.Models.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,21 @@ namespace BHOurProject.Models.Entity
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public string Name { get; set; }
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string Image { get; set; }
+
+        public bool AddSubCategory(SubCategory sub)
+        {
+            var result = false;
+            DataContext db = new DataContext();
+            if (sub != null)
+            {
+                db.SubCategory.Add(sub);
+                db.SaveChanges();
+                result = true;
+            }
+
+            return result;
+        }
     }
 }
