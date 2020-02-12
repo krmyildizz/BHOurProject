@@ -854,6 +854,7 @@ a {
     html.scroll .inner-body,
     html.boxed .inner-body {
         margin-right: 0;
+        margin-left: 0;
     }
 
     html.fixed .content-with-menu-has-toolbar .inner-toolbar,
@@ -868,7 +869,7 @@ a {
 
     html.fixed .content-with-menu .inner-toolbar,
     html.fixed.inner-menu-opened .content-with-menu .inner-toolbar {
-        left: 600px;
+        /*left: 600px;*/
     }
 
     html.fixed .inner-menu-toggle,
@@ -8592,7 +8593,7 @@ html.dark .dd-handle {
     .toggle.ios, .toggle-on.ios, .toggle-off.ios {
         border-radius: 20px;
         display: block;
-        margin: 0 auto;
+        /*margin: 0 auto;*/
     }
 
         .toggle.ios .toggle-handle {

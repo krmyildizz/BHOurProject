@@ -50,7 +50,7 @@
                                 <button type="button" class="mb-xs mt-xs mr-xs btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">İşlemler <span class="caret"></span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>  <a href="#" ng-click="editCategory(item)" class="on-default edit-row"><i class="fa fa-pencil"></i><span>Güncelle</span></a></li>
-                                    <li>  <a href="#" ng-click="EnableAddSubCategorys(item)" class="on-default add-on"><i class="fa fa-plus"></i><span>Alt Kategori Ekle</span></a></li>
+                                    <li>  <a href="#" style="color:#005580;" ng-click="EnableAddSubCategorys(item)" class="on-default add-on"><i class="fa fa-plus"></i><span>Alt Kategori Ekle</span></a></li>
                                     <li><a href="#" class="on-default remove-row" ng-click="deleteCategory(item.Id)"><i class="fa fa-trash-o"></i><span>Sil</span></a></li>
                                 </ul>
                             </div>
@@ -77,11 +77,11 @@
                         <td><input type="text" ng-model="selected.Name" class="form-control" /></td>
                         <td>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Görsel Ekle</label>
-                                <div class="col-md-8">
+                                @*<label class="col-md-2 control-label">Görsel Ekle</label>*@
+                                <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
-                                            <div class="uneditable-input">
+                                            <div class="uneditable-input" style="width:50%;">
                                                 <i class="fa fa-file fileupload-exists"></i>
                                                 <span class="fileupload-preview"></span>
                                             </div>

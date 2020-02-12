@@ -28,10 +28,10 @@
         </div>
     </header>
     <!-- start: page -->
-    <section class="panel" >
+    <section class="panel">
         <header class="panel-heading" ng-show="!EnableEdit&&!showAddProduct">
             <div class="panel-actions">
-                <a class="buttons btn btn-success"  ng-click="showAddProducts()">Ekle <i class="fa fa-plus"></i></a>
+                <a class="buttons btn btn-success" ng-click="showAddProducts()">Ekle <i class="fa fa-plus"></i></a>
             </div>
 
             <h2 class="panel-title">Ürünler</h2>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input ng-model="selected.Name" type="text" class="input-group"/>
+                        <input ng-model="selected.Name" type="text" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     <div class="col-md-12">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
                             <div class="input-append">
-                                <div class="uneditable-input">
+                                <div class="uneditable-input" style="width:90%;">
                                     <i class="fa fa-file fileupload-exists"></i>
                                     <span class="fileupload-preview"></span>
                                 </div>
@@ -115,7 +115,7 @@
                     <div class="col-md-12">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
                             <div class="input-append">
-                                <div class="uneditable-input">
+                                <div class="uneditable-input" style="width:90%;">
                                     <i class="fa fa-file fileupload-exists"></i>
                                     <span class="fileupload-preview"></span>
                                 </div>
@@ -135,7 +135,8 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description"></textarea></div>
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description"></textarea></div>*@
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.Description"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -143,7 +144,8 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması 2</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description2"></textarea></div>
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description2"></textarea></div>*@
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.Description2"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -151,23 +153,27 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Uygulama Alanları</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.AplicationAreas"></textarea></div>
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'></div>*@
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.AplicationAreas"></textarea>
+                    @*<summernote ng-model="selected.AplicationAreas">
+
+                        </summernote>*@
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12" style="margin-bottom:5px;">
+            <div class="form-group row mt-10">
+                <div class="col-md-2 form-label">
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Üretim Yeri</h5>
                 </div>
-                <div class="col-md-12" style="margin-top:10px;">
-                    <input type="text" ng-model="selected.ManufacturingPlace" />
+                <div class="col-sm-10">
+                    <input type="text" ng-model="selected.ManufacturingPlace" class="form-control" />
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Aktif/Pasif</h5>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-10 text-left">
                     <input type="checkbox" id="isActiveAdd" ng-model="selected.IsActive" data-toggle="toggle" checked data-style="ios" />
                 </div>
             </div>
@@ -177,7 +183,8 @@
                     <a href="#" class="mb-xs mt-xs mr-xs btn btn-success" ng-click="saveProduct()">Güncelle</a>
                 </div>
             </div>
-</section>
+        </div>
+    </section>
     <section ng-show="EnableEdit" class="panel" id="ProductUpdate">
         <header class="panel-heading">
             <h2 class="panel-title">Ürün Güncelle</h2>
@@ -200,7 +207,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input ng-model="selected.Name" type="text" class="input-group" />
+                        <input ng-model="selected.Name" type="text" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -210,7 +217,7 @@
                     <div class="col-md-12">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
                             <div class="input-append">
-                                <div class="uneditable-input">
+                                <div class="uneditable-input" style="width:90%;">
                                     <i class="fa fa-file fileupload-exists"></i>
                                     <span class="fileupload-preview"></span>
                                 </div>
@@ -231,7 +238,7 @@
                     <div class="col-md-12">
                         <div class="fileupload fileupload-new" data-provides="fileupload">
                             <div class="input-append">
-                                <div class="uneditable-input">
+                                <div class="uneditable-input" style="width:90%;">
                                     <i class="fa fa-file fileupload-exists"></i>
                                     <span class="fileupload-preview"></span>
                                 </div>
@@ -251,7 +258,9 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description"></textarea></div>
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.Description"></textarea>
+
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><textarea rows="6" cols="100" ng-model="selected.Description"></textarea></div>*@
                 </div>
             </div>
             <div class="row">
@@ -259,7 +268,9 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Açıklaması 2</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><<textarea rows="6" cols="100" ng-model="selected.Description2"></textarea></div>
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.Description2"></textarea>
+
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><<textarea rows="6" cols="100" ng-model="selected.Description2"></textarea></div>*@
                 </div>
             </div>
             <div class="row">
@@ -267,23 +278,25 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Uygulama Alanları</h5>
                 </div>
                 <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><<textarea rows="6" cols="100" ng-model="selected.AplicationAreas"></textarea></div>
+                    <textarea style="width: 100%;border: 0;border: 1px solid #cfcfcf;border-radius: 3px;" rows="6" cols="100" ng-model="selected.AplicationAreas"></textarea>
+
+                    @*<div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'><<textarea rows="6" cols="100" ng-model="selected.AplicationAreas"></textarea></div>*@
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12" style="margin-bottom:5px;">
+            <div class="form-group row mt-10">
+                <div class="col-md-2 form-label">
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Üretim Yeri</h5>
                 </div>
-                <div class="col-md-12" style="margin-top:10px;">
-                    <div class="summernote" data-plugin-summernote data-plugin-options='{ "height": 10, "codemirror": { "theme": "ambiance" } }'><<textarea rows="1" cols="10" ng-model="selected.ManufacturingPlace"></textarea></div>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="selected.ManufacturingPlace" class="form-control" />
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" style="margin-bottom:5px;">
+                <div class="col-md-2">
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Aktif/Pasif</h5>
                 </div>
-                <div class="col-md-12" style="margin-top:10px;">
-                    <input type="checkbox" id="isActiveEdit" ng-model="selected.IsActive" data-toggle="toggle" checked data-style="ios" />
+                <div class="col-md-10 text-left">
+                    <input type="checkbox" id="isActiveAdd" ng-model="selected.IsActive" data-toggle="toggle" checked data-style="ios" />
                 </div>
             </div>
             <div class="row">

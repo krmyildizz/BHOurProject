@@ -133,7 +133,7 @@ namespace BHOurProject.Areas.Admin.Controllers
                                    FtpWebRequest.Create(Fullftp);
 
 
-                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu38B6");
+                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu28B6");
                 reqFtp.KeepAlive = false;
                 reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
                 reqFtp.UseBinary = true;
@@ -160,7 +160,7 @@ namespace BHOurProject.Areas.Admin.Controllers
                 FtpWebRequest reqFtp =
                               (FtpWebRequest)
                                   FtpWebRequest.Create(FullPdf);
-                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu38B6");
+                reqFtp.Credentials = new NetworkCredential("u9172314", "OImu28B6");
                 reqFtp.KeepAlive = false;
                 reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
                 reqFtp.UseBinary = true;
