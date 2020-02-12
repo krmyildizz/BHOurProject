@@ -78,7 +78,7 @@
                     <a href="#" data-filter="*" class="current">Tümü</a>
                     @foreach (var item in ViewBag.customer)
                     {
-                        <a href="#" data-filter=".@item.Name" class="current">@item.Name</a>
+                        <a href="#" data-filter=".@item.Name.Replace(" ","")" class="current">@item.Name</a>
                     }
                 </div>
             </div>
@@ -86,7 +86,7 @@
 
                 @foreach (var refs in ViewBag.referance)
                 {
-                    <a rel="example_group" class="@refs.CustomerName objects" title="@refs.CustomerName" href="@refs.Image">
+                    <a rel="example_group" class="@refs.CustomerName.Replace(" ","") objects" title="@refs.CustomerName" href="@refs.Image">
                         <img alt="" src="@refs.Image" />
                     </a>
                 }

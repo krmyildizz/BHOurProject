@@ -1,7 +1,33 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "OurView";
 }
 
-<h2>OurView</h2>
-
+<!--== About Company Start ==-->
+<section class="grey-bg xs-pb-60" id="tesis">
+    <div class="warehouse-main">
+        <div class="row">
+            <div class="col-md-8 centerize-col text-center">
+                <div class="section-title">
+                    <h2 class="default-color">Tesislerimiz</h2>
+                    <hr class="center_line green-bg">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.Company)
+            {
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="feature-box text-center xs-mb-30 feature-box-default-bg center-feature">
+                        <i class="icon-streetsign font-40px"></i>
+                        <h4 class="mt-0 font-600">@item.Department</h4>
+                        <p class="font-400" id="tesisText" style="    height: 150px;
+    display: block;
+    overflow: hidden">@item.DetailInformation</p>
+    <a href="/Machine/MachineDetail/@item.Id">Detaylı Bilgi</a>
+</div>
+</div>
+}
+        </div>
+    </div>
+</section>
+<!--== About Company End ==-->

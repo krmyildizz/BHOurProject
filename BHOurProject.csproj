@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Models\ImageUpload.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CertificateController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1748,6 +1749,8 @@
     <Content Include="Content\assets\css\master.css" />
     <Content Include="Content\assets\css\responsive.css" />
     <Content Include="Content\assets\css\slick.css" />
+    <Content Include="Content\assets\css\toast.css" />
+    <Content Include="Content\assets\css\toast.min.css" />
     <Content Include="Content\assets\fancybox\blank.gif" />
     <Content Include="Content\assets\fancybox\fancybox_loading%402x.gif" />
     <Content Include="Content\assets\fancybox\fancybox_loading.gif" />
@@ -1829,6 +1832,8 @@
     <Content Include="Content\assets\js\master.js" />
     <Content Include="Content\assets\js\plugins.js" />
     <Content Include="Content\assets\js\smoothscroll.js" />
+    <Content Include="Content\assets\js\toast.js" />
+    <Content Include="Content\assets\js\toast.min.js" />
     <Content Include="Content\assets\videos\explore.jpg" />
     <Content Include="Content\assets\videos\home-video.mp4" />
     <Content Include="Content\assets\videos\home-video.webm" />
@@ -2297,6 +2302,7 @@
     <Content Include="Views\Reference\ReferenceList.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\OurView.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -84,7 +84,20 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             data: JSON.stringify({ product: $scope.selected, subCategory: $scope.selected.subCategory, image: $scope.ImageSourceIcon, pdf: $scope.Pdf}),
             dataType: "json"
         }).then(function successCallback(response) {
-            
+            $.toast({
+                title: 'Notice!',
+                subtitle: '11 mins ago',
+                content: 'This is a toast message.',
+                type: 'info',
+                delay: 3000,
+                //img: {
+                //    src: 'image.png',
+                //    class: 'rounded',
+                //    title: '<a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Title',
+                //    alt: 'Alternative'
+                //},
+                pause_on_hover: false
+            });
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);

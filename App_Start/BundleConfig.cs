@@ -32,8 +32,9 @@ namespace BHOurProject
             "~/Scripts/angular-mocks.js",
             "~/Scripts/angular-route.js",
             "~/Scripts/angular-resource.js",
+            "~/Scripts/angular-sanitize.js",
             "~/Scripts/angular-sanitize.js"
-            
+
             )
 
         );
@@ -48,7 +49,9 @@ namespace BHOurProject
        "~/Scripts/angular-mocks.js",
        "~/Scripts/angular-route.js",
        "~/Scripts/angular-resource.js",
-       "~/Scripts/angular-sanitize.js"
+       "~/Scripts/angular-sanitize.js",
+       "~/Content/assets/js/toast.js",
+       "~/Content/assets/js/toast.min.js"
 
        )
 

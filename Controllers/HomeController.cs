@@ -34,6 +34,11 @@ namespace BHOurProject.Controllers
             db = new DataContext();
             return View(db.Product.Where(i => i.Id == id).FirstOrDefault());
         }
+        public ActionResult Contact()
+        {
+           
+            return View();
+        }
         public PartialViewResult About()
         {
             @ViewBag.Message = "Hakkımızda";
