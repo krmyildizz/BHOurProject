@@ -9,7 +9,12 @@ namespace BHOurProject
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                       "~/Scripts/jquery-{version}.js",
+                       "~/Content/assets/js/jquery-confirm.js",
+                       "~/Content/assets/js/jquery-confirm.min.js",
+                       "~/Scripts/js/jquery-min.js"
+                       ));
+
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -49,9 +54,9 @@ namespace BHOurProject
        "~/Scripts/angular-mocks.js",
        "~/Scripts/angular-route.js",
        "~/Scripts/angular-resource.js",
-       "~/Scripts/angular-sanitize.js",
-       "~/Content/assets/js/toast.js",
-       "~/Content/assets/js/toast.min.js"
+       "~/Scripts/angular-sanitize.js"
+     
+
 
        )
 
@@ -61,7 +66,10 @@ namespace BHOurProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/assets/css/jquery-confirm.css"
+
+                      ));
         }
     }
 }

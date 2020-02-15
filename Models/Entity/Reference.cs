@@ -29,11 +29,28 @@ namespace BHOurProject.Models.Entity
         public bool AddReferance(Reference refs)
         {
             var result = false;
-            DataContext db = new DataContext();
-           
-                db.Reference.Add(refs);
-                db.SaveChanges();
-                result = true;
+          
+            try
+            {
+                if (refs!=null)
+                {
+                    DataContext db = new DataContext();
+                    db.Reference.Add(refs);
+                    var referanceResult=   db.SaveChanges();
+                    result = Convert.ToBoolean(referanceResult);
+                }
+                else
+                {
+                    return result;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+                
            
 
             return result;
@@ -42,25 +59,49 @@ namespace BHOurProject.Models.Entity
         public bool UpdateReferance(Reference refs)
         {
             var result = false;
-            DataContext db = new DataContext();
-            var deneme = db.Entry(refs).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                if (refs != null)
+                {
+                    DataContext db = new DataContext();
+                    db.Entry(refs).State = EntityState.Modified;
+                    var referanceResult = db.SaveChanges();
+                    result = Convert.ToBoolean(referanceResult);
+                }
+                else { return result; }
+                }
+            catch (Exception)
+            {
+
+                return result;
+            }
+            
             return result;
 
         }
         public bool DeleteReference(int id)
         {
-            bool result;
-            DataContext db = new DataContext();
-            Reference reference = db.Reference.Find(id);
-            if (reference != null)
+            bool result=false;
+           
+            try
             {
-                db.Reference.Remove(reference);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                Reference reference = db.Reference.Find(id);
+                if (reference != null)
+                {
+                    db.Reference.Remove(reference);
+                    var referanceResult = db.SaveChanges();
+                    result = Convert.ToBoolean(referanceResult);
+                }
+                else
+                    return result;
             }
-            else
-                result = false;
+            catch (Exception)
+            {
+
+                return result;
+            }
+            
             return result;
         }
     }

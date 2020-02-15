@@ -12,8 +12,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         }
         $scope.EnableEdit = true;
         $scope.selected = angular.copy(item);
-       
-        $("#aplicationArea").summernote("code", "your text");
+      
 
     }
   
@@ -57,7 +56,7 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             dataType: "json"
         }).then(function successCallback(response) {
             $scope.productList = response.data;
-            
+            $scope.EnableEdit = false;
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -71,6 +70,23 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             data: JSON.stringify({ product: $scope.selected, image: $scope.ImageSourceIcon, pdf: $scope.Pdf,subCategory: $scope.selected.subCategory }),
             dataType: "json"
         }).then(function successCallback(response) {
+            $.confirm({
+                title: 'Ekleme İşlemi',
+                content: response.data.replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getProductList();
+                    }
+                }
+            }
+
+            );
+            $scope.getProductList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -81,23 +97,26 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
         $http({
             method: "post",
             url: "/Admin/Product/UpdateCategory",
-            data: JSON.stringify({ product: $scope.selected, subCategory: $scope.selected.subCategory, image: $scope.ImageSourceIcon, pdf: $scope.Pdf}),
+            data: JSON.stringify({ product: $scope.selected, subCategory: $scope.selected.CategoryId, image: $scope.ImageSourceIcon, pdf: $scope.Pdf}),
             dataType: "json"
         }).then(function successCallback(response) {
-            $.toast({
-                title: 'Notice!',
-                subtitle: '11 mins ago',
-                content: 'This is a toast message.',
-                type: 'info',
-                delay: 3000,
-                //img: {
-                //    src: 'image.png',
-                //    class: 'rounded',
-                //    title: '<a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Title',
-                //    alt: 'Alternative'
-                //},
-                pause_on_hover: false
-            });
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"',''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+                    
+                    Mesaj: function () {
+                        $scope.getProductList();
+                    }
+                }
+            }
+                
+            );
+            $scope.getProductList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -125,6 +144,22 @@ myAppAdmin.controller('ProductController', ['$scope', '$http', function ($scope,
             data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
+            $.confirm({
+                title: 'Silme İşlemi',
+                content: response.data.replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getProductList();
+                    }
+                }
+            }
+
+            );
             $scope.getProductList();
         }, function errorCallback(response) {
 

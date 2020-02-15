@@ -24,39 +24,73 @@ namespace BHOurProject.Models.Entity
         }
         public bool UpdateCustomer(Customer customer)
         {
-
             var result = false;
-            data = new DataContext();
-            data.Entry(customer).State = EntityState.Modified;
-            data.SaveChanges();
+            try
+            {
+                if (customer!=null) {
+                    data = new DataContext();
+                    data.Entry(customer).State = EntityState.Modified;
+                    var customerResult = data.SaveChanges();
+                    result = Convert.ToBoolean(customerResult);
+                }
+                else
+                    return result;
+
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+
+           
+            
             return result;
         }
         public bool DeleteCustomer(int id)
         {
-            bool result;
-            DataContext db = new DataContext();
-            Customer customer = db.Customer.Find(id);
-            if (customer != null)
+            bool result = false;
+            try
             {
-                db.Customer.Remove(customer);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                Customer customer = db.Customer.Find(id);
+                if (customer != null)
+                {
+                    db.Customer.Remove(customer);
+                    var customerResult = data.SaveChanges();
+                    result = Convert.ToBoolean(customerResult);
+                }
+                else
+                    return result;
             }
-            else
-                result = false;
+            catch (Exception ex)
+            {
+                return result;
+            }
+         
             return result;
         }
 
         public bool AddCustomer(Customer customer)
         {
             var result = false;
-            DataContext db = new DataContext();
-            if (customer != null)
+            try
             {
-                db.Customer.Add(customer);
-                db.SaveChanges();
-                result = true;
+                if (customer != null)
+                {
+                    DataContext db = new DataContext();
+                    if (customer != null)
+                    {
+                        db.Customer.Add(customer);
+                        var customerResult = data.SaveChanges();
+                        result = Convert.ToBoolean(customerResult);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                return result;
+            }
+           
 
             return result;
 

@@ -46,7 +46,21 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
-            alert(response.data.message);
+            $.confirm({
+                title: 'Ekleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCompanyList();
+                    }
+                }
+            });
+            $scope.getCompanyList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -61,6 +75,20 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             dataType: "json"
         }).then(function successCallback(response) {
 
+            $.confirm({
+                title: 'Silme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCompanyList();
+                    }
+                }
+            });
             $scope.getCompanyList();
 
         }, function errorCallback(response) {
@@ -76,8 +104,22 @@ myAppAdmin.controller('CompanyController', ['$scope', '$http', function ($scope,
             data: JSON.stringify(selected),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCategoryList = response.data;
-            alert(response.data.message);
+            $scope.getCompany = response.data;
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCompanyList();
+                    }
+                }
+            });
+            $scope.getCompanyList();
 
         }, function errorCallback(response) {
  

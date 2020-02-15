@@ -1746,6 +1746,8 @@
     <Content Include="Content\assets\css\cubeportfolio.css" />
     <Content Include="Content\assets\css\custom-icons.min.css" />
     <Content Include="Content\assets\css\icofont.min.css" />
+    <Content Include="Content\assets\css\jquery-confirm.css" />
+    <Content Include="Content\assets\css\jquery-confirm.min.css" />
     <Content Include="Content\assets\css\master.css" />
     <Content Include="Content\assets\css\responsive.css" />
     <Content Include="Content\assets\css\slick.css" />
@@ -1799,7 +1801,7 @@
     <Content Include="Content\assets\images\logo-black.png" />
     <Content Include="Content\assets\images\logo-full-light.png" />
     <Content Include="Content\assets\images\logo-white.png" />
-    <Content Include="Content\assets\images\logo.png" />
+    <Content Include="Content\assets\images\logo.jpg" />
     <Content Include="Content\assets\images\portfolio\grid\1.jpg" />
     <Content Include="Content\assets\images\portfolio\grid\2.jpg" />
     <Content Include="Content\assets\images\portfolio\grid\3.jpg" />
@@ -1827,6 +1829,8 @@
     <Content Include="Content\assets\images\team\team-02.jpg" />
     <Content Include="Content\assets\images\team\team-03.jpg" />
     <Content Include="Content\assets\images\team\team-04.jpg" />
+    <Content Include="Content\assets\js\jquery-confirm.js" />
+    <Content Include="Content\assets\js\jquery-confirm.min.js" />
     <Content Include="Content\assets\js\jquery.min.js" />
     <Content Include="Content\assets\js\jquery.mousewheel.pack.js" />
     <Content Include="Content\assets\js\master.js" />
@@ -2156,11 +2160,11 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\About\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Content\assets\css\jquery-confirm.less" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

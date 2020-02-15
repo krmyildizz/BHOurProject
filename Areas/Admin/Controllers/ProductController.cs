@@ -26,30 +26,24 @@ namespace BHOurProject.Areas.Admin.Controllers
         [HttpPost]
         public string SaveProduct(Product product, string image, string pdf, CategoryDTO subCategory)
         {
-            string ftpFolder = "/Files/Image";
-            string imageType = ImageUpload.GetFileType(image);
-            string FileIconeName = Guid.NewGuid().ToString();
-            string imagepdf = ImageUpload.GetFileType(pdf);
 
-            byte[] fileBytes = ImageUpload.Parse(image);
-            byte[] pdfByte = ImageUpload.Parse(pdf);
-            string Fullftp = "ftp://demoproje.site/httpdocs/Files/Image/" + FileIconeName + "." + imageType;
-            string FullPdf = "ftp://demoproje.site/httpdocs/Files/Image/" + imagepdf + "." + imagepdf;
-            string Httpimg= "http://demoproje.site/Files/Image/" + FileIconeName + "." + imageType;
-            string HttpPdf = "http://demoproje.site/Files/Image/" + imagepdf + "." + imagepdf;
+            string FullPdfHttp = "";
+            string httpAdres = "";
             if (image != null)
             {
+                string FileIconeName = Guid.NewGuid().ToString();
+                byte[] fileBytes = ImageUpload.Parse(image);
+                string imageType = ImageUpload.GetFileType(image);
+                string Fullftp = "ftp://demoproje.site/httpdocs/Files/Image/" + FileIconeName + "." + imageType;
+                httpAdres = "http://demoproje.site/Files/Image/" + FileIconeName + "." + imageType;
                 FtpWebRequest reqFtp =
                                (FtpWebRequest)
                                    FtpWebRequest.Create(Fullftp);
-
-
                 reqFtp.Credentials = new NetworkCredential("u9172314", "OImu28B6");
                 reqFtp.KeepAlive = false;
                 reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
                 reqFtp.UseBinary = true;
                 reqFtp.UsePassive = true;
-
                 try
                 {
                     using (Stream strm = reqFtp.GetRequestStream())
@@ -58,8 +52,6 @@ namespace BHOurProject.Areas.Admin.Controllers
                         strm.Close();
 
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -68,6 +60,16 @@ namespace BHOurProject.Areas.Admin.Controllers
             }
             if (pdf != null)
             {
+                string FileIconeName = Guid.NewGuid().ToString();
+                string imagepdf = ImageUpload.GetFileType(pdf);
+
+
+                byte[] pdfByte = ImageUpload.Parse(pdf);
+
+                string FullPdf = "ftp://demoproje.site/httpdocs/Files/Image/" + imagepdf + "." + "pdf";
+
+                FullPdfHttp = "http://demoproje.site/Files/Image/" + FileIconeName + "." + "pdf";
+
                 FtpWebRequest reqFtp =
                               (FtpWebRequest)
                                   FtpWebRequest.Create(FullPdf);
@@ -90,7 +92,7 @@ namespace BHOurProject.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-
+                    string messages = ex.Message;
                 }
 
             }
@@ -103,9 +105,9 @@ namespace BHOurProject.Areas.Admin.Controllers
                 pro.Description2 = product.Description2;
                 pro.AplicationAreas = product.AplicationAreas;
                 pro.ManufacturingPlace = product.ManufacturingPlace;
-                pro.Image = Httpimg;
+                pro.Image = httpAdres;
                 pro.SubName = product.SubName;
-                pro.Pdf = HttpPdf;
+                pro.Pdf = FullPdfHttp;
                 pro.IsActive = product.IsActive;
                 result = pro.AddProduct(pro);
             }
@@ -113,32 +115,26 @@ namespace BHOurProject.Areas.Admin.Controllers
             return JsonConvert.SerializeObject(message);
         }
         [HttpPost]
-        public string UpdateCategory(Product product, CategoryDTO subCategory,string image,string pdf)
+        public string UpdateCategory(ProductDTO product, CategoryDTO subCategory,string image,string pdf)
         {
-            string ftpFolder = "/Files/Image";
-            string imageType = ImageUpload.GetFileType(image);
-            string FileIconeName = Guid.NewGuid().ToString();
-            string imagepdf = ImageUpload.GetFileType(pdf);
 
-            byte[] fileBytes = ImageUpload.Parse(image);
-            byte[] pdfByte= ImageUpload.Parse(pdf);
-            string Fullftp = "ftp://demoproje.site/httpdocs/Files/Image/" + FileIconeName + "." + imageType;
-            string FullPdf = "ftp://demoproje.site/httpdocs/Files/Image/" + imagepdf + "." + imagepdf;
-            string httpAdres = "http://demoproje.site/Files/Image/" + FileIconeName + "." + imageType;
-            string FullPdfHttp= "http://demoproje.site/Files/Image/" + FileIconeName + "." + imageType;
+            string FullPdfHttp = product.Pdf == null ? "" : product.Pdf;
+            string httpAdres = product.Image == null?"":product.Image;
             if (image != null)
             {
+                string FileIconeName = Guid.NewGuid().ToString();
+                byte[] fileBytes = ImageUpload.Parse(image);
+                string imageType = ImageUpload.GetFileType(image);
+                string Fullftp = "ftp://demoproje.site/httpdocs/Files/Image/" + FileIconeName + "." + imageType;
+                httpAdres = "http://demoproje.site/Files/Image/" + FileIconeName + "." + imageType;
                 FtpWebRequest reqFtp =
                                (FtpWebRequest)
                                    FtpWebRequest.Create(Fullftp);
-
-
                 reqFtp.Credentials = new NetworkCredential("u9172314", "OImu28B6");
                 reqFtp.KeepAlive = false;
                 reqFtp.Method = WebRequestMethods.Ftp.UploadFile;
                 reqFtp.UseBinary = true;
                 reqFtp.UsePassive = true;
-
                 try
                 {
                     using (Stream strm = reqFtp.GetRequestStream())
@@ -147,8 +143,6 @@ namespace BHOurProject.Areas.Admin.Controllers
                         strm.Close();
 
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -157,6 +151,16 @@ namespace BHOurProject.Areas.Admin.Controllers
             }
             if (pdf!=null)
             {
+                 string FileIconeName = Guid.NewGuid().ToString();
+                string imagepdf = ImageUpload.GetFileType(pdf);
+
+
+                byte[] pdfByte = ImageUpload.Parse(pdf);
+
+                string FullPdf = "ftp://demoproje.site/httpdocs/Files/Image/" + imagepdf + "." + "pdf";
+
+                 FullPdfHttp = "http://demoproje.site/Files/Image/" + FileIconeName + "." + "pdf";
+
                 FtpWebRequest reqFtp =
                               (FtpWebRequest)
                                   FtpWebRequest.Create(FullPdf);
@@ -197,7 +201,7 @@ namespace BHOurProject.Areas.Admin.Controllers
                 pro.SubName = product.SubName;
                 pro.Pdf = FullPdfHttp;
                 pro.IsActive = product.IsActive;
-                result = pro.UpdateProduct(product);
+                result = pro.UpdateProduct(pro);
 
             }
             string message = result ? "İşlem Tamamlandı." : "Hata Oluştu.";

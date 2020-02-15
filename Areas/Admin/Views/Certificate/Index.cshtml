@@ -41,13 +41,13 @@
                 </thead>
                 <tbody>
 
-                    <tr ng-show="EnableEdit==false && isAddCategory==false" class="gradeA even" role="row" ng-repeat="item in getCertificateList">
+                    <tr ng-show="EnableEdit==false && isAddCategory==false" class="gradeA even" role="row" ng-repeat="item in getCertificate">
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="mb-xs mt-xs mr-xs btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown" aria-expanded="false">İşlemler <span class="caret"></span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>  <a href="#" ng-click="editCertificate(item)" class="on-default edit-row"><i class="fa fa-pencil"></i><span>Güncelle</span></a></li>
-                                    <li><a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i><span>Sil</span></a></li>
+                                    <li><a href="#" class="on-default remove-row" ng-click="deleteCertificate(item.Id)"><i class="fa fa-trash-o"></i><span>Sil</span></a></li>
                                 </ul>
                             </div>
                         </td>
@@ -78,17 +78,6 @@
                 </tbody>
             </table>
 
-        </div><div class="row datatables-footer">
-            <div class="col-md-12">
-                <div class="dataTables_paginate paging_bs_normal" id="datatable-editable_paginate">
-                    <ul class="pagination">
-                        <li class="prev disabled"><a href="#"><span class="fa fa-chevron-left"></span></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="next"><a href="#"><span class="fa fa-chevron-right"></span></a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     @*</div>*@

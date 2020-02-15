@@ -5,7 +5,7 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
     $scope.EnableAddSubCategory = false;
     $scope.selected = {};
     $("#addToTable").hide();
-    $scope.getCategoryList = function () {
+    $scope.getCategoryLists = function () {
         //$http POST function
         $http({
             method: "post",
@@ -56,7 +56,21 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
-            alert(response.data.message);
+            $.confirm({
+                title: 'Ekleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCategoryLists();
+                    }
+                }
+            });
+            $scope.getCategoryList();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -83,22 +97,23 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
             dataType: "json"
         }).then(function successCallback(response) {
             $scope.EnableAddSubCategory = false;
-            $.toast({
-                title: 'Notice!',
-                subtitle: '11 mins ago',
-                content: 'This is a toast message.',
-                type: 'info',
-                delay: 3000,
-                //img: {
-                //    src: 'image.png',
-                //    class: 'rounded',
-                //    title: '<a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Title',
-                //    alt: 'Alternative'
-                //},
-                pause_on_hover: false
-            });
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
 
-            $scope.getCategoryList();
+                    Mesaj: function () {
+                        $scope.getCategoryLists();
+                    }
+                }
+            });
+            $scope.getCategoryLists();
+
+           
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -111,7 +126,22 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
             data: JSON.stringify({ id: id }),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCategoryList();
+            $.confirm({
+                title: 'Silme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCategoryLists();
+                    }
+                }
+            });
+
+            $scope.getCategoryLists();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -125,14 +155,28 @@ myAppAdmin.controller('CategoryController', ['$scope', '$http', function ($scope
             data: JSON.stringify(selected),
             dataType: "json"
         }).then(function successCallback(response) {
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
 
+                    Mesaj: function () {
+                        $scope.getCategoryLists();
+                    }
+                }
+            });
+            $scope.getCategoryLists();
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
         });
     }
     $(document).ready(function () {
-        $scope.getCategoryList();
+        $scope.getCategoryLists();
         $scope.EnableAddSubCategory = false;
     });
 }]);

@@ -53,37 +53,72 @@ namespace BHOurProject.Models.Entity
         {
 
             var result = false;
-            DataContext db = new DataContext();
-            var deneme = db.Entry(category).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                if (category != null)
+                {
+                    DataContext db = new DataContext();
+                    db.Entry(category).State = EntityState.Modified;
+                    var categoryResult = db.SaveChanges();
+                    result = Convert.ToBoolean(categoryResult);
+                }
+                else return result;
+
+            }
+            catch (Exception)
+            {
+
+                return result;
+            }
+          
             return result;
         }
         public bool DeleteCategory(int id)
         {
-            bool result;
-            DataContext db = new DataContext();
-            Category category = db.Category.Find(id);
-            if (category != null)
+            bool result=false;
+            try
             {
-                db.Category.Remove(category);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                Category category = db.Category.Find(id);
+                if (category != null)
+                {
+                    db.Category.Remove(category);
+                    var categoryResult = db.SaveChanges();
+                    result = Convert.ToBoolean(categoryResult);
+                }
+                else
+                    return result;
             }
-            else
-                result = false;
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+           
             return result;
         }
 
         public bool AddCategory(Category category)
         {
             var result = false;
-            DataContext db = new DataContext();
-            if (category != null)
+            try
             {
-                db.Category.Add(category);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                if (category != null)
+                {
+                    db.Category.Add(category);
+                    var categoryResult = db.SaveChanges();
+                    result = Convert.ToBoolean(categoryResult);
+                }
+                else
+                    return result;
             }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+           
            
             return result;
 

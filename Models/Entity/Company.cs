@@ -34,39 +34,75 @@ namespace BHOurProject.Models.Entity
         }
         public bool UpdateCompany(Company company)
         {
-
             var result = false;
-            data = new DataContext();
-            data.Entry(company).State = EntityState.Modified;
-            data.SaveChanges();
+            try
+            {
+                if (company != null) {
+                    data = new DataContext();
+                    data.Entry(company).State = EntityState.Modified;
+                    var companyResult = data.SaveChanges();
+                    result = Convert.ToBoolean(companyResult);
+                }
+                else
+                {
+                    return result;
+                }
+               
+                
+            }
+            catch (Exception ex)
+            {
+
+                result = false;
+            }
+  
             return result;
         }
         public bool DeleteCompany(int id)
         {
             bool result;
-            DataContext db = new DataContext();
-            Company company = db.Company.Find(id);
-            if (company != null)
+            try
             {
-                db.Company.Remove(company);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                Company company = db.Company.Find(id);
+                if (company != null)
+                {
+                    db.Company.Remove(company);
+                    var companyResult = db.SaveChanges();
+                    result = Convert.ToBoolean(companyResult);
+                }
+                else
+                    result = false;
             }
-            else
+            catch (Exception ex)
+            {
+
                 result = false;
+            }
+            
             return result;
         }
 
         public bool AddCompany(Company company)
         {
             var result = false;
-            DataContext db = new DataContext();
-            if (company != null)
+            try
             {
-                db.Company.Add(company);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                if (company != null)
+                {
+                    db.Company.Add(company);
+                    var companyResult = db.SaveChanges();
+                    result = Convert.ToBoolean(companyResult);
+                }
+
             }
+            catch (Exception)
+            {
+
+                result = false;
+            }
+           
 
             return result;
 

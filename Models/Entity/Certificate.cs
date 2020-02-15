@@ -27,37 +27,70 @@ namespace BHOurProject.Models.Entity
         {
 
             var result = false;
-            data = new DataContext();
-            data.Entry(certificate).State = EntityState.Modified;
-            data.SaveChanges();
+            try
+            {
+                if (certificate != null)
+                {
+                    data = new DataContext();
+                    data.Entry(certificate).State = EntityState.Modified;
+                    var SertificateResult = data.SaveChanges();
+                    result = Convert.ToBoolean(SertificateResult);
+                }
+                else return result;
+            }
+            catch (Exception ex)
+            {
+                return result;
+            }
+         
             return result;
         }
         public bool DeleteCertificate(int id)
         {
-            bool result;
-            DataContext db = new DataContext();
-            Certificate certificate = db.Certificate.Find(id);
-            if (certificate != null)
+            bool result=false;
+            try
             {
-                db.Certificate.Remove(certificate);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                Certificate certificate = db.Certificate.Find(id);
+                if (certificate != null)
+                {
+                    db.Certificate.Remove(certificate);
+                    var SertificateResult = data.SaveChanges();
+                    result = Convert.ToBoolean(SertificateResult);
+                }
+                else
+                    return result;
             }
-            else
-                result = false;
+            catch (Exception)
+            {
+
+                return result;
+            }
+            
             return result;
         }
 
         public bool AddCertificate(Certificate certificate)
         {
             var result = false;
-            DataContext db = new DataContext();
-            if (certificate != null)
+            try
             {
-                db.Certificate.Add(certificate);
-                db.SaveChanges();
-                result = true;
+                DataContext db = new DataContext();
+                if (certificate != null)
+                {
+                    db.Certificate.Add(certificate);
+                    var SertificateResult = data.SaveChanges();
+                    result = Convert.ToBoolean(SertificateResult);
+                }
+                else
+                    return result;
             }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+         
 
             return result;
 

@@ -14,7 +14,7 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
             data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCertificateList = response.data;
+            $scope.getCertificate = response.data;
             $scope.EnableEdit = false;
             $scope.isAddCategory = false;
         }, function errorCallback(response) {
@@ -46,7 +46,21 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
-            $scope.getCertificateList();
+            $.confirm({
+                title: 'Ekleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCertificateList();
+                    }
+                }
+            }); $scope.getCertificateList();
+
         }, function errorCallback(response) {
                 $scope.getCertificateList();
             console.log(response.errorCallback);
@@ -55,11 +69,24 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
     $scope.deleteCertificate = function (id) {
         $http({
             method: "post",
-            url: "/Admin/Certificate/DeteteCertificate",
+            url: "/Admin/Certificate/DeleteCertificate",
             data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
+            $.confirm({
+                title: 'Silme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
 
+                    Mesaj: function () {
+                        $scope.getCertificateList();
+                    }
+                }
+                });
             $scope.getCertificateList();
 
         }, function errorCallback(response) {
@@ -76,6 +103,20 @@ myAppAdmin.controller('CertificateController', ['$scope', '$http', function ($sc
             dataType: "json"
         }).then(function successCallback(response) {
             $scope.EnableEdit = false;
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCertificateList();
+                    }
+                }
+            }); $scope.getCertificateList();
 
         }, function errorCallback(response) {
 

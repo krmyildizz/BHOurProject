@@ -14,7 +14,7 @@ myAppAdmin.controller('CustomerController', ['$scope', '$http', function ($scope
             data: JSON.stringify(),
             dataType: "json"
         }).then(function successCallback(response) {
-            $scope.getCustomersList = response.data;
+            $scope.getCustomers = response.data;
             $scope.EnableEdit = false;
             $scope.isAddCategory = false;
         }, function errorCallback(response) {
@@ -46,7 +46,24 @@ myAppAdmin.controller('CustomerController', ['$scope', '$http', function ($scope
             dataType: "json"
         }).then(function successCallback(response) {
             $("#addToTable").hide();
+            $.confirm({
+                title: 'Ekleme İşlemi',
+                content: response.data.replace('"', '').replace('"',''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCustomerList();
+                    }
+                }
+            }
+
+            );
             $scope.getCustomerList();
+           
         }, function errorCallback(response) {
             $scope.getCertificateList();
             console.log(response.errorCallback);
@@ -55,13 +72,27 @@ myAppAdmin.controller('CustomerController', ['$scope', '$http', function ($scope
     $scope.deleteCustomer = function (id) {
         $http({
             method: "post",
-            url: "/Admin/Customer/DeteteCustomer",
+            url: "/Admin/Customer/DeleteCustomer",
             data: JSON.stringify({ id: parseInt(id) }),
             dataType: "json"
         }).then(function successCallback(response) {
+            $.confirm({
+                title: 'Güncelleme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
 
+                    Mesaj: function () {
+                        $scope.getCustomerList();
+                    }
+                }
+            }
+
+            );
             $scope.getCustomerList();
-
         }, function errorCallback(response) {
 
             console.log(response.errorCallback);
@@ -76,6 +107,22 @@ myAppAdmin.controller('CustomerController', ['$scope', '$http', function ($scope
             dataType: "json"
         }).then(function successCallback(response) {
             $scope.EnableEdit = false;
+            $.confirm({
+                title: 'Silme İşlemi',
+                content: response.data.replace('"', '').replace('"', ''),
+                type: 'green',
+                backgroundDismiss: true,
+                typeAnimated: true,
+                autoClose: 'Mesaj|1000',
+                buttons: {
+
+                    Mesaj: function () {
+                        $scope.getCustomerList();
+                    }
+                }
+            }
+
+            );
             $scope.getCustomerList();
         }, function errorCallback(response) {
 

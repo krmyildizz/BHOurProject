@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <select ng-model="selected.subCategory" data-plugin-selectTwo data-ng-options="a.SubName group by a.Name for a in subCategory" class="form-control populate"></select>
+                        <select ng-model="selected.subCategory" data-plugin-selectTwo data-ng-options="a.SubName group by a.Name for a in subCategory " class="form-control populate"></select>
                     </div>
                 </div>
             </div>
@@ -85,6 +85,16 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <input ng-model="selected.Name" type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Alt Adı</h5>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input ng-model="selected.SubName" type="text" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -180,7 +190,7 @@
             <div class="row">
                 <div class="col-md-12 text-right" style="margin-top:10px;">
                     <a href="#" class="mb-xs mt-xs mr-xs btn btn-danger" ng-click="showCancel()">Geri</a>
-                    <a href="#" class="mb-xs mt-xs mr-xs btn btn-success" ng-click="saveProduct()">Güncelle</a>
+                    <a href="#" class="mb-xs mt-xs mr-xs btn btn-success" ng-click="saveProduct()">Ekle</a>
                 </div>
             </div>
         </div>
@@ -196,7 +206,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <select ng-model="selected.subCategory" data-plugin-selectTwo data-ng-options="a.SubName group by a.Name for a in subCategory" class="form-control populate"></select>
+                        <select ng-model="selected.CategoryId" ng-selected="selected.CategoryId" data-plugin-selectTwo data-ng-options="a.SubName group by a.Name for a in subCategory " class="form-control populate"></select>
 
                     </div>
                 </div>
@@ -208,6 +218,16 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <input ng-model="selected.Name" type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Ürün Alt Adı</h5>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input ng-model="selected.SubName" type="text" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -296,7 +316,7 @@
                     <h5 class="text-semibold text-dark text-uppercase mb-md mt-lg">Aktif/Pasif</h5>
                 </div>
                 <div class="col-md-10 text-left">
-                    <input type="checkbox" id="isActiveAdd" ng-model="selected.IsActive" data-toggle="toggle" checked data-style="ios" />
+                    <input type="checkbox" id="isActiveEdit" ng-model="selected.IsActive" data-toggle="toggle" checked data-style="ios" />
                 </div>
             </div>
             <div class="row">
@@ -307,6 +327,7 @@
             </div>
         </div>
     </section>
+   
 </div>
 <!-- end: page -->
 @section Scripts {
